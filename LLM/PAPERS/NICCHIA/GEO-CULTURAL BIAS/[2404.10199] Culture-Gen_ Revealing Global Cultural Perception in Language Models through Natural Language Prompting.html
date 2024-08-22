@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>[2404.10199] Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting</title><meta property="og:description" content="As the utilization of large language models (LLMs) has proliferated worldwide, it is crucial for them to have adequate knowledge and fair representation for diverse global cultures. In this work, we uncover culture per…">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting">
+<meta name="twitter:image:src" content="https://ar5iv.labs.arxiv.org/assets/ar5iv_card.png">
+<meta name="twitter:image:alt" content="ar5iv logo">
+<meta property="og:title" content="Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting">
+<meta property="og:site_name" content="ar5iv">
+<meta property="og:image" content="https://ar5iv.labs.arxiv.org/assets/ar5iv_card.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ar5iv.labs.arxiv.org/html/2404.10199">
+
+<!--Generated on Sun May  5 18:11:08 2024 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<script>
+  function detectColorScheme(){
+    var theme="light";
+    var current_theme = localStorage.getItem("ar5iv_theme");
+    if(current_theme){
+      if(current_theme == "dark"){
+        theme = "dark";
+      } }
+    else if(!window.matchMedia) { return false; }
+    else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      theme = "dark"; }
+    if (theme=="dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light"); } }
+
+  detectColorScheme();
+
+  function toggleColorScheme(){
+    var current_theme = localStorage.getItem("ar5iv_theme");
+    if (current_theme) {
+      if (current_theme == "light") {
+        localStorage.setItem("ar5iv_theme", "dark"); }
+      else {
+        localStorage.setItem("ar5iv_theme", "light"); } }
+    else {
+        localStorage.setItem("ar5iv_theme", "dark"); }
+    detectColorScheme(); }
+</script>
+<link media="all" rel="stylesheet" href="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/ar5iv-fonts.0.7.9.min.css"><link media="all" rel="stylesheet" href="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/ar5iv.0.7.9.min.css"><link media="all" rel="stylesheet" href="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/ar5iv-site.0.2.2.css">
+</head>
+<body>
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line">
+<div id="p1" class="ltx_para">
+<span id="p1.1" class="ltx_ERROR undefined">\floatsetup</span>
+<p id="p1.2" class="ltx_p">[table]capposition=bottom
+<span id="p1.2.1" class="ltx_ERROR undefined">\newfloatcommand</span>capbtabboxtable[][<span id="p1.2.2" class="ltx_ERROR undefined">\FBwidth</span>]
+
+
+</p>
+</div>
+<h1 class="ltx_title ltx_title_document">
+<img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x1.png" id="id1.g1" class="ltx_graphics ltx_img_landscape" width="9" height="7" alt="[Uncaptioned image]"><span id="id15.id1" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>: Revealing Global Cultural Perception in Language Models through Natural Language Prompting</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Huihan Li<sup id="id16.14.id1" class="ltx_sup">1</sup>, Liwei Jiang<sup id="id17.15.id2" class="ltx_sup">2</sup>, Jena D. Huang<sup id="id18.16.id3" class="ltx_sup">3</sup>, Hyunwoo Kim<sup id="id19.17.id4" class="ltx_sup">3</sup>, Sebastin Santy<sup id="id20.18.id5" class="ltx_sup">2</sup>, 
+<br class="ltx_break"><span id="id12.11.6" class="ltx_text ltx_font_bold">Taylor Sorensen<sup id="id12.11.6.1" class="ltx_sup"><span id="id12.11.6.1.1" class="ltx_text ltx_font_medium">2</span></sup>, Bill Yuchen Lin<sup id="id12.11.6.2" class="ltx_sup"><span id="id12.11.6.2.1" class="ltx_text ltx_font_medium">3</span></sup>, Nouha Dziri<sup id="id12.11.6.3" class="ltx_sup"><span id="id12.11.6.3.1" class="ltx_text ltx_font_medium">3</span></sup>, Xiang Ren<sup id="id12.11.6.4" class="ltx_sup"><span id="id12.11.6.4.1" class="ltx_text ltx_font_medium">1</span></sup> &amp; Yejin Choi<sup id="id12.11.6.5" class="ltx_sup"><span id="id12.11.6.5.1" class="ltx_text ltx_font_medium ltx_font_italic">2,3</span></sup>
+<br class="ltx_break"><sup id="id12.11.6.6" class="ltx_sup"><span id="id12.11.6.6.1" class="ltx_text ltx_font_medium">1</span></sup></span>University of Southern California &nbsp;&nbsp;&nbsp; <sup id="id21.19.id6" class="ltx_sup">2</sup>University of Washington 
+<br class="ltx_break"><sup id="id22.20.id7" class="ltx_sup">3</sup>Allen Institute of Artificial Intelligence 
+<br class="ltx_break"><span id="id23.21.id8" class="ltx_text ltx_font_typewriter">huihanl@usc.edu, lwjiang@cs.washington.edu, nouhad@allenai.org</span>
+</span></span>
+</div>
+
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+<p id="id24.id1" class="ltx_p">As the utilization of large language 
+models (LLMs) has proliferated worldwide, it is crucial for them to have
+ adequate knowledge and fair representation for diverse global cultures.
+ In this work, we uncover culture perceptions of three SOTA models on 
+110 countries and regions on 8 culture-related topics through 
+culture-conditioned generations, and extract symbols from these 
+generations that are associated to each culture by the LLM. We discover 
+that culture-conditioned generation consist of linguistic “markers” that
+ distinguish marginalized cultures apart from default cultures. We also 
+discover that LLMs have an uneven degree of diversity in the culture 
+symbols, and that cultures from different geographic regions have 
+different presence in LLMs’ culture-agnostic generation. Our findings 
+promote further research in studying the knowledge and fairness of 
+global culture perception in LLMs. Code and Data can be found here&nbsp;<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span><a target="_blank" href="https://github.com/huihanlhh/Culture-Gen/" title="" class="ltx_ref ltx_href">https://github.com/huihanlhh/Culture-Gen/</a></span></span></span>.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para ltx_noindent">
+<p id="S1.p1.1" class="ltx_p">While the utilization of large language 
+models (LLMs) has proliferated worldwide, LLMs are showned to manifest 
+cultural biases in the following aspects: models prefers culture 
+names&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Tang et&nbsp;al., <a href="#bib.bib27" title="" class="ltx_ref">2023</a>)</cite>, cultural entities&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Naous et&nbsp;al., <a href="#bib.bib18" title="" class="ltx_ref">2023</a>)</cite> and etiquette&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Palta &amp; Rudinger, <a href="#bib.bib21" title="" class="ltx_ref">2023</a>; Dwivedi et&nbsp;al., <a href="#bib.bib6" title="" class="ltx_ref">2023</a>)</cite>
+ of western-cultures than non-western cultures, and models’ opinions on 
+social matters align more with western values than non-western 
+values&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Ryan et&nbsp;al., <a href="#bib.bib24" title="" class="ltx_ref">2024</a>; Tao et&nbsp;al., <a href="#bib.bib28" title="" class="ltx_ref">2023</a>; Mukherjee et&nbsp;al., <a href="#bib.bib17" title="" class="ltx_ref">2023</a>; Durmus et&nbsp;al., <a href="#bib.bib5" title="" class="ltx_ref">2023</a>; AlKhamissi et&nbsp;al., <a href="#bib.bib1" title="" class="ltx_ref">2024</a>)</cite>.</p>
+</div>
+<div id="S1.p2" class="ltx_para ltx_noindent">
+<p id="S1.p2.1" class="ltx_p">In addition to LLM preference and 
+alignment to cultures, it is also crucial to evaluate whether these 
+models manifest adequate knowledge and fair perception for diverse 
+global cultures during generation. While existing works explore 
+extracting or probing culture-related knowledge stored in LMs&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Keleg &amp; Magdy, <a href="#bib.bib13" title="" class="ltx_ref">2023</a>; Yin et&nbsp;al., <a href="#bib.bib32" title="" class="ltx_ref">2022</a>; Nguyen et&nbsp;al., <a href="#bib.bib20" title="" class="ltx_ref">2023b</a>)</cite>,
+ our work focus on uncovering LLMs’ perception of global culture that is
+ manifested from culture-conditioned prompted generations.</p>
+</div>
+<figure id="S1.F1" class="ltx_figure"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x2.png" id="S1.F1.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="423" height="253" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>We construct <img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x4.png" id="S1.F1.2.g1" class="ltx_graphics ltx_img_landscape" width="9" height="7" alt="Refer to caption"><span id="S1.F1.8.1" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>, a dataset of generations on 8 culture-related topics on 110 countries and regions, using <span id="S1.F1.9.2" class="ltx_text ltx_font_typewriter">gpt-4</span>, <span id="S1.F1.10.3" class="ltx_text ltx_font_typewriter">llama2-13b</span>, <span id="S1.F1.11.4" class="ltx_text ltx_font_typewriter">mistral-7b</span>. From the generations, we extract symbols that each model associates with each culture. Using <span id="S1.F1.12.5" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>,
+ we the examine the generations with culture-distinguishing markers, and
+ evaluate the diversity of cultural symbols and LM preferences to 
+cultural symbols in culture-agnostic generations.</figcaption>
+</figure>
+<div id="S1.p3" class="ltx_para ltx_noindent">
+<p id="S1.p3.1" class="ltx_p">We present a simple LLM culture perception
+ extraction framework that does not involve human labeling or external 
+knowledge bases, and can be applied on any LLM and study any culture. We
+ first use natural language prompts to elicit LLM generations on 8 
+culture-related topics for 110 countries and regions, using <span id="S1.p3.1.1" class="ltx_text ltx_font_typewriter">gpt-4</span>, <span id="S1.p3.1.2" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;and <span id="S1.p3.1.3" class="ltx_text ltx_font_typewriter">mistral-7b</span>. From these generation we extract culture symbols, <span id="S1.p3.1.4" class="ltx_text ltx_font_italic">i.e.</span>
+ entities from the model generations that fall under the culture-related
+ topics (eg. “pizza” for “food” topic, “hip hop” for “favorite music” 
+topic), and match them to their associated cultures, using an 
+unsupervised sentence-probability ranking method. We include the 
+generations and extracted culture symbols in our dataset&nbsp;<span id="S1.p3.1.5" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>, which will be released to the public.</p>
+</div>
+<div id="S1.p4" class="ltx_para ltx_noindent">
+<p id="S1.p4.1" class="ltx_p">Our definition on a satisfactory “global 
+culture perception” is two-folded. First, a culturally-knowledgable LLM 
+should be able to generate a diverse set of culture symbols pertaining 
+to a culture-related topic for any culture. The diversity of culture 
+symbols indicate the span of the model’s knowledge, and most importantly
+ that the model is able to manifest that knowledge in downstream 
+generation tasks. Second, a culturally-fair LLM should not perceive any 
+of the global cultures as the mainstream or default cultures, while 
+distinguishing other cultures using distinctive vocabulary or linguistic
+ structures.&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Cheng et&nbsp;al., <a href="#bib.bib2" title="" class="ltx_ref">2023</a>)</cite>
+ notice that in persona writing, seemingly positive generations contain 
+“marked words” that distinguishes marginalized racial groups from the 
+default groups, causing harms such as enhancing stereotypes and 
+essentializing narratives.</p>
+</div>
+<div id="S1.p5" class="ltx_para ltx_noindent">
+<p id="S1.p5.1" class="ltx_p">In our paper, we also demonstrate how the community can use&nbsp;<span id="S1.p5.1.1" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>&nbsp;for
+ uncovering LLM’s global culture perceptions. To evaluate on cultural 
+fairness, we first capture semiotic structures in the generations that 
+reveal underlying model biases on marginalized cultures. We find that 
+models tend to precede generations with the word “traditional” for 
+cultures in Asian, Eastern European, and African-Islamic countries, as 
+many as 30% for <span id="S1.p5.1.2" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;generations and almost 100% for <span id="S1.p5.1.3" class="ltx_text ltx_font_typewriter">gpt-4</span>&nbsp;generations.
+ In addition, for these cultures, models tend to add parenthesized 
+explanations after the generated culture symbols, with the underlying 
+assumption that the readers should not be familiar with such entities. 
+We define such phenomenon as “cultural markedness”, where LLMs 
+distinguish non-default cultures using both vocabulary and 
+non-vocabulary markers. We then evaluate the representation of global 
+cultures in culture-agnostic generations, by counting the number of 
+culture symbols for each culture that are present in culture-agnostic 
+generations. We again found geographic discrepancies, where West 
+European, English Speaking and Nordic countries have the highest number 
+of overlapping culture symbols with culture-agnostic generations.</p>
+</div>
+<div id="S1.p6" class="ltx_para ltx_noindent">
+<p id="S1.p6.1" class="ltx_p">To evaluate on cultural knowledge, we 
+measure the diversity of culture symbols of each topic for each culture 
+and model. We find large discrepancy among geographic regions for all 
+topics and all models, indicating that there exists some marginalized 
+cultures about whom the models do not have adequate knowledge. In 
+addition, we find that the diversity of culture symbols have 
+moderate-to-strong correlation with the co-occurrence frequency of a 
+culture name and topic-related keywords in training corpora, 
+RedPajama&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Computer, <a href="#bib.bib3" title="" class="ltx_ref">2023</a>)</cite>, with <span id="S1.p6.1.1" class="ltx_text ltx_font_italic">Kendall-<math id="S1.p6.1.1.m1.1" class="ltx_Math" alttext="\tau" display="inline"><semantics id="S1.p6.1.1.m1.1a"><mi id="S1.p6.1.1.m1.1.1" xref="S1.p6.1.1.m1.1.1.cmml">τ</mi><annotation-xml encoding="MathML-Content" id="S1.p6.1.1.m1.1b"><ci id="S1.p6.1.1.m1.1.1.cmml" xref="S1.p6.1.1.m1.1.1">𝜏</ci></annotation-xml><annotation encoding="application/x-tex" id="S1.p6.1.1.m1.1c">\tau</annotation></semantics></math></span>
+ as high as 0.35. Even though RedPajama is not the exact training data 
+of any of the evaluated models, such correlation suggests that training 
+data plays an important role in model’s cultural knowledge.</p>
+</div>
+<div id="S1.p7" class="ltx_para ltx_noindent">
+<p id="S1.p7.1" class="ltx_p">Last but not least, we share our insights 
+from our global culture perception evaluations. First, we argue that in 
+addition to critiquing cultural biases from a Western-Eastern dichotomy,
+ it is also important to consider influential cultures within a 
+geographic region that affects models’ perception on nearby cultures. 
+Then, we intellectually compare our method of unsupervised collection of
+ culture symbols with other collection methods. Finally, we suggest 
+further studies to be conducted: 1. studying open-source models with 
+open training data can get better explanability for generation 
+behaviors; 2. exploring the effect of other training components such as 
+alignment by comparing same models with different training methods.
+We hope our work inspire more research in evaluating LLM global culture 
+perception using cultural generations.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>Related Work</h2>
+
+<div id="S2.p1" class="ltx_para ltx_noindent">
+<p id="S2.p1.1" class="ltx_p">Recent work in probing and evaluating the cultural representation of LLMs ranges across many areas, such as culinary habits <cite class="ltx_cite ltx_citemacro_citep">(Palta &amp; Rudinger, <a href="#bib.bib21" title="" class="ltx_ref">2023</a>)</cite>, etiquettes <cite class="ltx_cite ltx_citemacro_citep">(Dwivedi et&nbsp;al., <a href="#bib.bib6" title="" class="ltx_ref">2023</a>)</cite>, commonsense knowledge <cite class="ltx_cite ltx_citemacro_cite">Nguyen et&nbsp;al. (<a href="#bib.bib19" title="" class="ltx_ref">2023a</a>)</cite>, facts
+<cite class="ltx_cite ltx_citemacro_cite">Keleg &amp; Magdy (<a href="#bib.bib13" title="" class="ltx_ref">2023</a>)</cite>. In addition, some works evaluate stereotypes that target intersectional demographic groups by prompting LLMs <cite class="ltx_cite ltx_citemacro_citep">(Ma et&nbsp;al., <a href="#bib.bib16" title="" class="ltx_ref">2023</a>; Cheng et&nbsp;al., <a href="#bib.bib2" title="" class="ltx_ref">2023</a>)</cite>.
+Some works contrast and analyze the cultural differences between the 
+dominant Western culture and specific other under-represented cultures, 
+such as Arab vs. Western <cite class="ltx_cite ltx_citemacro_citep">(Naous et&nbsp;al., <a href="#bib.bib18" title="" class="ltx_ref">2023</a>)</cite>, India and the West <cite class="ltx_cite ltx_citemacro_citep">(Khandelwal et&nbsp;al., <a href="#bib.bib14" title="" class="ltx_ref">2023</a>)</cite>.</p>
+</div>
+<div id="S2.p2" class="ltx_para ltx_noindent">
+<p id="S2.p2.1" class="ltx_p">Another line of work explores cultural diversity under multilingual settings <cite class="ltx_cite ltx_citemacro_citep">(Mukherjee et&nbsp;al., <a href="#bib.bib17" title="" class="ltx_ref">2023</a>)</cite>, incorporating geo-diverse multilingual probing <cite class="ltx_cite ltx_citemacro_cite">Yin et&nbsp;al. (<a href="#bib.bib32" title="" class="ltx_ref">2022</a>)</cite>, and investigating multicultural biases using the Word Embedding Association Test (WEAT) across 24 languages <cite class="ltx_cite ltx_citemacro_citep">(Mukherjee et&nbsp;al., <a href="#bib.bib17" title="" class="ltx_ref">2023</a>)</cite>. In particular, low-resource languages have been studied as media of under-represented cultures like African American <cite class="ltx_cite ltx_citemacro_citep">(Deas et&nbsp;al., <a href="#bib.bib4" title="" class="ltx_ref">2023</a>)</cite> and Indonesian <cite class="ltx_cite ltx_citemacro_cite">Wibowo et&nbsp;al. (<a href="#bib.bib31" title="" class="ltx_ref">2023</a>)</cite> languages and cultures.
+<cite class="ltx_cite ltx_citemacro_cite">AlKhamissi et&nbsp;al. (<a href="#bib.bib1" title="" class="ltx_ref">2024</a>)</cite>.
+ Several studies have employed socio-cultural surveys originally 
+designed for humans, e.g., the World Values Survey (WVS) and Pew Global 
+Attitudes Survey, to evaluate the cultural understanding of LLMs <cite class="ltx_cite ltx_citemacro_citep">(Ramezani &amp; Xu, <a href="#bib.bib23" title="" class="ltx_ref">2023</a>; Tao et&nbsp;al., <a href="#bib.bib28" title="" class="ltx_ref">2023</a>; Durmus et&nbsp;al., <a href="#bib.bib5" title="" class="ltx_ref">2023</a>)</cite> and extrapolate training data for enhancing model culture awareness <cite class="ltx_cite ltx_citemacro_citep">(Li et&nbsp;al., <a href="#bib.bib15" title="" class="ltx_ref">2024</a>)</cite>.</p>
+</div>
+<div id="S2.p3" class="ltx_para ltx_noindent">
+<p id="S2.p3.1" class="ltx_p">Recent families of aligned models present unique challenges in their cultural representations. In particular, <cite class="ltx_cite ltx_citemacro_citet">Ryan et&nbsp;al. (<a href="#bib.bib24" title="" class="ltx_ref">2024</a>)</cite> has found that alignment of LLMs has unintended uneven effects on the global representation, and <cite class="ltx_cite ltx_citemacro_citet">Tang et&nbsp;al. (<a href="#bib.bib27" title="" class="ltx_ref">2023</a>)</cite> probes socio-demographic preference biases in model latent representation.
+To improve cultural alignment, <cite class="ltx_cite ltx_citemacro_citet">AlKhamissi et&nbsp;al. (<a href="#bib.bib1" title="" class="ltx_ref">2024</a>)</cite>
+ proposed anthropological prompting. Finally, using large language model
+ generation to create new resources and benchmarks for cultural 
+knowledge has proven to be a promising direction for increasing data 
+resources for boosting models’ multicultural proficiency <cite class="ltx_cite ltx_citemacro_citep">(Fung et&nbsp;al., <a href="#bib.bib8" title="" class="ltx_ref">2024</a>; Ziems et&nbsp;al., <a href="#bib.bib33" title="" class="ltx_ref">2023</a>; Huang &amp; Yang, <a href="#bib.bib12" title="" class="ltx_ref">2023</a>)</cite>.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>Collection of <span id="S3.1.1" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>
+</h2>
+
+<figure id="S3.T1" class="ltx_table">
+<table id="S3.T1.1" class="ltx_tabular ltx_centering ltx_align_middle">
+<tbody><tr id="S3.T1.1.1" class="ltx_tr">
+<td id="S3.T1.1.1.1" class="ltx_td ltx_align_center ltx_border_tt">Topic</td>
+<td id="S3.T1.1.1.2" class="ltx_td ltx_align_left ltx_border_tt">Prompt Template</td>
+</tr>
+<tr id="S3.T1.1.2" class="ltx_tr">
+<td id="S3.T1.1.2.1" class="ltx_td ltx_align_center ltx_border_tt">favorite_music</td>
+<td id="S3.T1.1.2.2" class="ltx_td ltx_align_left ltx_border_tt">My neighbor probably likes listening to</td>
+</tr>
+<tr id="S3.T1.1.3" class="ltx_tr">
+<td id="S3.T1.1.3.1" class="ltx_td ltx_align_center">music_instrument</td>
+<td id="S3.T1.1.3.2" class="ltx_td ltx_align_left">My neighbor probably likes playing</td>
+</tr>
+<tr id="S3.T1.1.4" class="ltx_tr">
+<td id="S3.T1.1.4.1" class="ltx_td ltx_align_center">exercise_routine</td>
+<td id="S3.T1.1.4.2" class="ltx_td ltx_align_left">My neighbor probably practices</td>
+</tr>
+<tr id="S3.T1.1.5" class="ltx_tr">
+<td id="S3.T1.1.5.1" class="ltx_td ltx_align_center">favorite_show_or_movie</td>
+<td id="S3.T1.1.5.2" class="ltx_td ltx_align_left">My neighbor probably likes watching</td>
+</tr>
+<tr id="S3.T1.1.6" class="ltx_tr">
+<td id="S3.T1.1.6.1" class="ltx_td ltx_align_center">food</td>
+<td id="S3.T1.1.6.2" class="ltx_td ltx_align_left">For dinner, my neighbor probably likes to eat</td>
+</tr>
+<tr id="S3.T1.1.7" class="ltx_tr">
+<td id="S3.T1.1.7.1" class="ltx_td ltx_align_center">picture</td>
+<td id="S3.T1.1.7.2" class="ltx_td ltx_align_left">On the front door of the house, my neighbor probably has a picture of</td>
+</tr>
+<tr id="S3.T1.1.8" class="ltx_tr">
+<td id="S3.T1.1.8.1" class="ltx_td ltx_align_center">statue</td>
+<td id="S3.T1.1.8.2" class="ltx_td ltx_align_left">On the front door of the house, my neighbor probably has a statue of</td>
+</tr>
+<tr id="S3.T1.1.9" class="ltx_tr">
+<td id="S3.T1.1.9.1" class="ltx_td ltx_align_center ltx_border_bb">clothing</td>
+<td id="S3.T1.1.9.2" class="ltx_td ltx_align_left ltx_border_bb">My neighbor is probably wearing</td>
+</tr>
+</tbody></table>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 1: </span>Prompt for each Topic. For culture-dependent generations, we prepend “My neighbor is [nationality].” to the prompt.</figcaption>
+</figure>
+<section id="S3.SS0.SSS0.Px1" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Countries and regions as a culture.</h4>
+
+<div id="S3.SS0.SSS0.Px1.p1" class="ltx_para ltx_noindent">
+<p id="S3.SS0.SSS0.Px1.p1.1" class="ltx_p">While diverse cultures exist 
+within one country (or region), we set the granularity of cultures at 
+the level of countries or regions. In our work, we include 110 countries
+ and regions that are represented in World Value Survey&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Haerpfer &amp; Kizilova, <a href="#bib.bib11" title="" class="ltx_ref">2012</a>)</cite> (Table&nbsp;<a href="#A1.T4" title="Table 4 ‣ Appendix A Countries and Regions ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>).
+ The same data collection approach can be applied at a more fine-grained
+ level, such as on different cultures within a country.</p>
+</div>
+</section>
+<section id="S3.SS0.SSS0.Px2" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Prompting on culture-related topics.</h4>
+
+<div id="S3.SS0.SSS0.Px2.p1" class="ltx_para ltx_noindent">
+<p id="S3.SS0.SSS0.Px2.p1.1" class="ltx_p">We collect model generations 
+on 8 culture-related topics: favorite music, music instrument, exercise 
+routine, favorite show or movie, food, picture, statue, and clothing. 
+The task is to continue generating from natural language prompts shown 
+in Table&nbsp;<a href="#S3.T1" title="Table 1 ‣ 3 Collection of Culture-Gen ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>. To increase the compliance to topic, we add <span id="S3.SS0.SSS0.Px2.p1.1.1" class="ltx_text ltx_font_italic">“Describe the [topic] of your neighbor.”</span> in front of each prompt. We generate 100 samples for each culture on each topic.</p>
+</div>
+</section>
+<section id="S3.SS0.SSS0.Px3" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Generative language models.</h4>
+
+<div id="S3.SS0.SSS0.Px3.p1" class="ltx_para ltx_noindent">
+<p id="S3.SS0.SSS0.Px3.p1.1" class="ltx_p">In this work, we evaluate three state-of-the-art language models: <span id="S3.SS0.SSS0.Px3.p1.1.1" class="ltx_text ltx_font_typewriter">gpt-4</span>, <span id="S3.SS0.SSS0.Px3.p1.1.2" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;and <span id="S3.SS0.SSS0.Px3.p1.1.3" class="ltx_text ltx_font_typewriter">mistral-7b</span>.
+ Our methodology can be applied to any generative language models. For 
+all models, we set the same hyperparameters: temperature=1.0, 
+top_p=0.95, top_k=50 and max_tokens=30, and period (“.”) as the stopping
+ criteria<span id="footnote2" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>In batch generations, we let the model finish and extract the first segment that ends with a period.</span></span></span>. For open-source models, we use the huggingface&nbsp;<span id="footnote3" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup><span class="ltx_tag ltx_tag_note">3</span><a target="_blank" href="https://huggingface.co/models" title="" class="ltx_ref ltx_href">https://huggingface.co/models</a></span></span></span> weights and implementations and sample all 100 generations at once (setting num_return_sequences=100). For <span id="S3.SS0.SSS0.Px3.p1.1.4" class="ltx_text ltx_font_typewriter">gpt-4</span>,
+ we use the OpenAI ChatCompletion API and set n=10 and sample 10 times, 
+as sampling 100 generations in the same API call is extremely time 
+consuming.</p>
+</div>
+<div id="S3.SS0.SSS0.Px3.p2" class="ltx_para ltx_noindent">
+<p id="S3.SS0.SSS0.Px3.p2.1" class="ltx_p">In total, we collect generations about 110 cultures from 3 state-of-the-art LLMs for 8 culture-related topics in <span id="S3.SS0.SSS0.Px3.p2.1.1" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>.</p>
+</div>
+</section>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>Finding Culture Symbols in <span id="S4.1.1" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>
+</h2>
+
+<section id="S4.SS0.SSS0.Px1" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Culture Symbols: concepts of a culture.</h4>
+
+<div id="S4.SS0.SSS0.Px1.p1" class="ltx_para ltx_noindent">
+<p id="S4.SS0.SSS0.Px1.p1.1" class="ltx_p">While the sociology term 
+“culture symbols” refer to symbols (i.e. object, word, or action that 
+represents a concept) identified by members of a culture as 
+representative of that culture&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Geertz, <a href="#bib.bib9" title="" class="ltx_ref">1973</a>)</cite>, in this work we extend this meaning to all concepts that <span id="S4.SS0.SSS0.Px1.p1.1.1" class="ltx_text ltx_font_italic">the language model</span>
+ perceives to be part of the culture. Entities that are valid 
+continuations to the prompt can be viewed as a symbol within the topic. 
+For example, both “songs by Ariana Grande” and “Ariana Grande” are 
+symbols for “favorite music” as they are both valid continuations to 
+“Describe the favorite music of your neighbor. My neighbor likes 
+listening to …”.</p>
+</div>
+</section>
+<section id="S4.SS0.SSS0.Px2" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Step 1: Extracting candidate symbols from <span id="S4.SS0.SSS0.Px2.1.1" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>&nbsp;generations.</h4>
+
+<div id="S4.SS0.SSS0.Px2.p1" class="ltx_para ltx_noindent">
+<p id="S4.SS0.SSS0.Px2.p1.1" class="ltx_p">We extract candidate symbols, <span id="S4.SS0.SSS0.Px2.p1.1.1" class="ltx_text ltx_font_italic">i.e.</span> phrases that may contain culture symbols, from <span id="S4.SS0.SSS0.Px2.p1.1.2" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>&nbsp;generations using <span id="S4.SS0.SSS0.Px2.p1.1.3" class="ltx_text ltx_font_typewriter">gpt-4-turbo-preview</span>. For each generation, we prompt <span id="S4.SS0.SSS0.Px2.p1.1.4" class="ltx_text ltx_font_typewriter">gpt-4-turbo-preview</span> with:</p>
+</div>
+<div id="S4.SS0.SSS0.Px2.p2" class="ltx_para ltx_noindent">
+<p id="S4.SS0.SSS0.Px2.p2.1" class="ltx_p">“<span id="S4.SS0.SSS0.Px2.p2.1.1" class="ltx_text ltx_font_italic">Extract
+ the [topic] from this text: [sentence]. If no [topic] present, return 
+None. If multiple [topic] entities present, separate them with ’;’.</span>”</p>
+</div>
+<div id="S4.SS0.SSS0.Px2.p3" class="ltx_para ltx_noindent">
+<p id="S4.SS0.SSS0.Px2.p3.1" class="ltx_p">where we construct the “[sentence]” using the prompt in Table&nbsp;<a href="#S3.T1" title="Table 1 ‣ 3 Collection of Culture-Gen ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>
+ concatenated with the candidate symbol. The output will be a list of 
+phrases separated by “;”, and we filter out invalid phrases that do not 
+contain any entities (for example, “traditional Albanian music” is 
+invalid, while “songs by Vitas” is valid). The rest of the symbols are 
+candidate symbols, which will be assigned to the culture in the 
+procedure below.</p>
+</div>
+</section>
+<section id="S4.SS0.SSS0.Px3" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Assigning Candidate Symbols to a Culture.</h4>
+
+<div id="S4.SS0.SSS0.Px3.p1" class="ltx_para ltx_noindent">
+<p id="S4.SS0.SSS0.Px3.p1.4" class="ltx_p">For <span id="S4.SS0.SSS0.Px3.p1.4.1" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;and <span id="S4.SS0.SSS0.Px3.p1.4.2" class="ltx_text ltx_font_typewriter">mistral-7b</span>, we measure the association of a candidate symbol to a culture as the joint probability of Culture <math id="S4.SS0.SSS0.Px3.p1.1.m1.1" class="ltx_Math" alttext="c" display="inline"><semantics id="S4.SS0.SSS0.Px3.p1.1.m1.1a"><mi id="S4.SS0.SSS0.Px3.p1.1.m1.1.1" xref="S4.SS0.SSS0.Px3.p1.1.m1.1.1.cmml">c</mi><annotation-xml encoding="MathML-Content" id="S4.SS0.SSS0.Px3.p1.1.m1.1b"><ci id="S4.SS0.SSS0.Px3.p1.1.m1.1.1.cmml" xref="S4.SS0.SSS0.Px3.p1.1.m1.1.1">𝑐</ci></annotation-xml><annotation encoding="application/x-tex" id="S4.SS0.SSS0.Px3.p1.1.m1.1c">c</annotation></semantics></math> and Symbol <math id="S4.SS0.SSS0.Px3.p1.2.m2.1" class="ltx_Math" alttext="e" display="inline"><semantics id="S4.SS0.SSS0.Px3.p1.2.m2.1a"><mi id="S4.SS0.SSS0.Px3.p1.2.m2.1.1" xref="S4.SS0.SSS0.Px3.p1.2.m2.1.1.cmml">e</mi><annotation-xml encoding="MathML-Content" id="S4.SS0.SSS0.Px3.p1.2.m2.1b"><ci id="S4.SS0.SSS0.Px3.p1.2.m2.1.1.cmml" xref="S4.SS0.SSS0.Px3.p1.2.m2.1.1">𝑒</ci></annotation-xml><annotation encoding="application/x-tex" id="S4.SS0.SSS0.Px3.p1.2.m2.1c">e</annotation></semantics></math> conditioned on Topic <math id="S4.SS0.SSS0.Px3.p1.3.m3.1" class="ltx_Math" alttext="T" display="inline"><semantics id="S4.SS0.SSS0.Px3.p1.3.m3.1a"><mi id="S4.SS0.SSS0.Px3.p1.3.m3.1.1" xref="S4.SS0.SSS0.Px3.p1.3.m3.1.1.cmml">T</mi><annotation-xml encoding="MathML-Content" id="S4.SS0.SSS0.Px3.p1.3.m3.1b"><ci id="S4.SS0.SSS0.Px3.p1.3.m3.1.1.cmml" xref="S4.SS0.SSS0.Px3.p1.3.m3.1.1">𝑇</ci></annotation-xml><annotation encoding="application/x-tex" id="S4.SS0.SSS0.Px3.p1.3.m3.1c">T</annotation></semantics></math>, written as <math id="S4.SS0.SSS0.Px3.p1.4.m4.2" class="ltx_Math" alttext="P(n,e|T)" display="inline"><semantics id="S4.SS0.SSS0.Px3.p1.4.m4.2a"><mrow id="S4.SS0.SSS0.Px3.p1.4.m4.2.2" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.cmml"><mi id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.3" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.3.cmml">P</mi><mo lspace="0em" rspace="0em" id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.2" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.2.cmml">​</mo><mrow id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.2.cmml"><mo stretchy="false" id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.2" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.2.cmml">(</mo><mi id="S4.SS0.SSS0.Px3.p1.4.m4.1.1" xref="S4.SS0.SSS0.Px3.p1.4.m4.1.1.cmml">n</mi><mo id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.3" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.2.cmml">,</mo><mrow id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.cmml"><mi id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.2" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.2.cmml">e</mi><mo fence="false" id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.1" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.1.cmml">|</mo><mi id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.3" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.3.cmml">T</mi></mrow><mo stretchy="false" id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.4" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.2.cmml">)</mo></mrow></mrow><annotation-xml encoding="MathML-Content" id="S4.SS0.SSS0.Px3.p1.4.m4.2b"><apply id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.cmml" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2"><times id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.2.cmml" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.2"></times><ci id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.3.cmml" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.3">𝑃</ci><interval closure="open" id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.2.cmml" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1"><ci id="S4.SS0.SSS0.Px3.p1.4.m4.1.1.cmml" xref="S4.SS0.SSS0.Px3.p1.4.m4.1.1">𝑛</ci><apply id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.cmml" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1"><csymbol cd="latexml" id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.1.cmml" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.1">conditional</csymbol><ci id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.2.cmml" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.2">𝑒</ci><ci id="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.3.cmml" xref="S4.SS0.SSS0.Px3.p1.4.m4.2.2.1.1.1.3">𝑇</ci></apply></interval></apply></annotation-xml><annotation encoding="application/x-tex" id="S4.SS0.SSS0.Px3.p1.4.m4.2c">P(n,e|T)</annotation></semantics></math>&nbsp;<span id="footnote4" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup><span class="ltx_tag ltx_tag_note">4</span>For <span id="footnote4.1" class="ltx_text ltx_font_typewriter">mistral-7b</span>, we perform a calibration process to mitigate the model’s prior bias towards a fixed set of cultures. See Appendix&nbsp;<a href="#A2.SS1" title="B.1 Calibration of mistral-7b during unsupervised probability ranking. ‣ Appendix B Culture Symbols ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">B.1</span></a>.</span></span></span>. More specifically, we construct a sentence following Table&nbsp;<a href="#A2.T5" title="Table 5 ‣ Appendix B Culture Symbols ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>,
+ and calculate the sentence probability using the same model that 
+generated the candidate symbol. Then We form a distribution of the 
+association between one candidate symbol and all 110 cultures by taking a
+ softmax over all the sentence probabilities. If a culture-symbol 
+association is above the average association, and if the candidate 
+symbol is in the generations for that culture, we assign that symbol as 
+the culture symbol for the culture.</p>
+</div>
+<div id="S4.SS0.SSS0.Px3.p2" class="ltx_para ltx_noindent">
+<p id="S4.SS0.SSS0.Px3.p2.1" class="ltx_p">For <span id="S4.SS0.SSS0.Px3.p2.1.1" class="ltx_text ltx_font_typewriter">gpt-4</span>,
+ without access to the logits, we do not perform assignment of culture 
+symbols. We use candidate symbols obtained from the previous step in 
+future analyses.</p>
+</div>
+<div id="S4.SS0.SSS0.Px3.p3" class="ltx_para ltx_noindent">
+<p id="S4.SS0.SSS0.Px3.p3.1" class="ltx_p">According to this criteria, a
+ culture symbol may be assigned to multiple cultures. Because of 
+cross-culture communication, it is common for multiple cultures to share
+ the same culture symbols, such as cuisine, clothing, and religion. We 
+do not prescribe culture symbols to any culture using human labeling or 
+external databases, as this process focuses on uncovering the model’s 
+perceptions about the cultures.</p>
+</div>
+</section>
+<section id="S4.SS0.SSS0.Px4" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Statistics about Culture Symbols.</h4>
+
+<div id="S4.SS0.SSS0.Px4.p1" class="ltx_para ltx_noindent">
+<p id="S4.SS0.SSS0.Px4.p1.1" class="ltx_p">In total, we extracted 13112 candidate culture symbols for <span id="S4.SS0.SSS0.Px4.p1.1.1" class="ltx_text ltx_font_typewriter">gpt-4</span>, 10172 culture symbols for <span id="S4.SS0.SSS0.Px4.p1.1.2" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;and 15236 culture symbols for <span id="S4.SS0.SSS0.Px4.p1.1.3" class="ltx_text ltx_font_typewriter">mistral-7b</span>(Table&nbsp;<a href="#A2.T6" title="Table 6 ‣ Appendix B Culture Symbols ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a>).</p>
+</div>
+</section>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 </span>LLM Global Culture Perception Analysis</h2>
+
+<div id="S5.p1" class="ltx_para ltx_noindent">
+<p id="S5.p1.1" class="ltx_p">In this section, we elaborate on our analysis on the cultural fairness and cultural knowledge of SOTA LLMs using <span id="S5.p1.1.1" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>.
+ First, we examine the “marking” behavior of LLMs that distinguishes 
+marginalized cultures from “default” cultures. Then, we show the uneven 
+presence of culture symbols in culture-agnostic generations among 
+geographic regions. Lastly, we show the connection of uneven diversity 
+of culture symbols to uneven culture presence in training data.</p>
+</div>
+<section id="S5.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.1 </span>Marked Cultures: a process of “othering” marginalized cultures from default cultures.</h3>
+
+<figure id="S5.T2" class="ltx_table ltx_align_floatright">
+<table id="S5.T2.1" class="ltx_tabular ltx_centering ltx_align_middle">
+<tbody><tr id="S5.T2.1.1" class="ltx_tr">
+<td id="S5.T2.1.1.1" class="ltx_td ltx_align_left ltx_border_tt" colspan="2"><span id="S5.T2.1.1.1.1" class="ltx_text ltx_font_italic">My neighbor is Algerian. For dinner, my neighbor likes to eat …</span></td>
+</tr>
+<tr id="S5.T2.1.2" class="ltx_tr">
+<td id="S5.T2.1.2.1" class="ltx_td ltx_align_left ltx_border_t">unmarked</td>
+<td id="S5.T2.1.2.2" class="ltx_td ltx_align_left ltx_border_t">couscous and Merguez sausages</td>
+</tr>
+<tr id="S5.T2.1.3" class="ltx_tr">
+<td id="S5.T2.1.3.1" class="ltx_td ltx_align_left ltx_border_t">marked (vocabulary)</td>
+<td id="S5.T2.1.3.2" class="ltx_td ltx_align_left ltx_border_t">
+<span id="S5.T2.1.3.2.1" class="ltx_text" style="color:#FF0000;">traditional Algerian</span> cuisine …</td>
+</tr>
+<tr id="S5.T2.1.4" class="ltx_tr">
+<td id="S5.T2.1.4.1" class="ltx_td ltx_align_left ltx_border_bb ltx_border_t">marked (parentheses)</td>
+<td id="S5.T2.1.4.2" class="ltx_td ltx_align_left ltx_border_bb ltx_border_t">harira <span id="S5.T2.1.4.2.1" class="ltx_text" style="color:#FF0000;">(a rich lentil soup)</span>
+</td>
+</tr>
+</tbody></table>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 2: </span>Examples of marked and unmarked generations on “food.”</figcaption>
+</figure>
+<section id="S5.SS1.SSS0.Px1" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Markedness.</h4>
+
+<div id="S5.SS1.SSS0.Px1.p1" class="ltx_para ltx_noindent">
+<p id="S5.SS1.SSS0.Px1.p1.1" class="ltx_p">Linguists utilize the concept
+ of “markedness” to highlight the social differences between an unmarked
+ default group and marked groups&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Waugh, <a href="#bib.bib29" title="" class="ltx_ref">1982</a>)</cite>.&nbsp;<cite class="ltx_cite ltx_citemacro_citet">Cheng et&nbsp;al. (<a href="#bib.bib2" title="" class="ltx_ref">2023</a>)</cite>
+ studies marked words in LLM generations that distinguish personas of 
+marked (non-white, non-male) groups from default (white, male) groups, 
+and argues that these marked words reflect patterns of othering and 
+exoticizing certain demographics.</p>
+</div>
+<div id="S5.SS1.SSS0.Px1.p2" class="ltx_para ltx_noindent">
+<p id="S5.SS1.SSS0.Px1.p2.1" class="ltx_p">We discover two types of 
+“markers” in LLM’s culture-conditioned generations: 1) using the word 
+“traditional” while mentioning culture name (vocabulary) and 2) adding 
+parentheses that explain the generated symbols (parentheses). Vocabulary
+ markers suggest that the models strongly associate certain cultures 
+with being “traditional”, as opposed to the default concept of being 
+“modern.”
+Parentheses markers suggest that the models assume that the users are 
+not familiar with the symbols, i.e. not from the culture to which the 
+symbols belong to.</p>
+</div>
+</section>
+<section id="S5.SS1.SSS0.Px2" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Measurement.</h4>
+
+<div id="S5.SS1.SSS0.Px2.p1" class="ltx_para ltx_noindent">
+<p id="S5.SS1.SSS0.Px2.p1.1" class="ltx_p">For vocabulary marker, we 
+count the number of generations that contains the word “traditional” or 
+the culture name. For parentheses marker, we count the number of 
+generations that contains parentheses.</p>
+</div>
+<figure id="S5.F2" class="ltx_figure"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x5.png" id="S5.F2.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="108" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>Different markedness for each geographic region by <span id="S5.F2.2.1" class="ltx_text ltx_font_typewriter">mistral-7b</span>. Central-Asia, Middle-East and East-Asia shows the highest markedness among all geographic regions.
+</figcaption>
+</figure>
+</section>
+<section id="S5.SS1.SSS0.Px3" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Geographic Discrepancy in Markedness.</h4>
+
+<div id="S5.SS1.SSS0.Px3.p1" class="ltx_para ltx_noindent">
+<p id="S5.SS1.SSS0.Px3.p1.1" class="ltx_p">Figure&nbsp;<a href="#S5.F2" title="Figure 2 ‣ Measurement. ‣ 5.1 Marked Cultures: a process of “othering” marginalized cultures from default cultures. ‣ 5 LLM Global Culture Perception Analysis ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a> shows the average number of generations for each geographic region that contain either type of marker for each topic by <span id="S5.SS1.SSS0.Px3.p1.1.1" class="ltx_text ltx_font_typewriter">mistral-7b</span>.
+ “English-Speaking”, “Latin-American” and “Nordic” countries 
+consistently have the lowest markedness among all topics, while “Eastern
+ European”, “African-Islamic”, “Middle-Eastern”, “Central-Asian”, 
+“South-Asian”,“East-Asian” and “Baltic” countries have higher markedness
+ among all topics. Figure&nbsp;<a href="#S5.F3" title="Figure 3 ‣ Geographic Discrepancy in Markedness. ‣ 5.1 Marked Cultures: a process of “othering” marginalized cultures from default cultures. ‣ 5 LLM Global Culture Perception Analysis ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>
+ illustrates the geographic discrepancy on the vocabulary markedness in 
+“clothing”. Countries in “African-Islamic”, “Central-Asian”, 
+“South-Asian”, “Southeast Asian” all have nearly 100% marked generations
+ in <span id="S5.SS1.SSS0.Px3.p1.1.2" class="ltx_text ltx_font_typewriter">gpt-4</span>, and higher degree of markedness than the rest of the geographic regions in <span id="S5.SS1.SSS0.Px3.p1.1.3" class="ltx_text ltx_font_typewriter">llama2-13b</span>.&nbsp;Figure&nbsp;<a href="#A3.F10" title="Figure 10 ‣ Appendix C Markedness ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">10</span></a>
+ shows a similar trend in parentheses markers, where “English-speaking”,
+ “Western-European”, “East-Asian” countries have the lowest proportion 
+of parentheses markers.</p>
+</div>
+<figure id="S5.F3" class="ltx_figure">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="S5.F3.sf1" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x6.png" id="S5.F3.sf1.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="423" height="194" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(a) </span><span id="S5.F3.sf1.2.1" class="ltx_text ltx_font_typewriter">llama2-13b<math id="S5.F3.sf1.2.1.m1.1" class="ltx_Math" alttext="\cdot" display="inline"><semantics id="S5.F3.sf1.2.1.m1.1b"><mo id="S5.F3.sf1.2.1.m1.1.1" xref="S5.F3.sf1.2.1.m1.1.1.cmml">⋅</mo><annotation-xml encoding="MathML-Content" id="S5.F3.sf1.2.1.m1.1c"><ci id="S5.F3.sf1.2.1.m1.1.1.cmml" xref="S5.F3.sf1.2.1.m1.1.1">⋅</ci></annotation-xml><annotation encoding="application/x-tex" id="S5.F3.sf1.2.1.m1.1d">\cdot</annotation></semantics></math></span> clothing </figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="S5.F3.sf2" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x7.png" id="S5.F3.sf2.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="193" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(b) </span><span id="S5.F3.sf2.2.1" class="ltx_text ltx_font_typewriter">gpt-4<math id="S5.F3.sf2.2.1.m1.1" class="ltx_Math" alttext="\cdot" display="inline"><semantics id="S5.F3.sf2.2.1.m1.1b"><mo id="S5.F3.sf2.2.1.m1.1.1" xref="S5.F3.sf2.2.1.m1.1.1.cmml">⋅</mo><annotation-xml encoding="MathML-Content" id="S5.F3.sf2.2.1.m1.1c"><ci id="S5.F3.sf2.2.1.m1.1.1.cmml" xref="S5.F3.sf2.2.1.m1.1.1">⋅</ci></annotation-xml><annotation encoding="application/x-tex" id="S5.F3.sf2.2.1.m1.1d">\cdot</annotation></semantics></math></span> clothing</figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>Generations for African and Asian cultures have most vocabulary markers.</figcaption>
+</figure>
+</section>
+<section id="S5.SS1.SSS0.Px4" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">The “Othering” in “Traditional Cultures”</h4>
+
+<div id="S5.SS1.SSS0.Px4.p1" class="ltx_para ltx_noindent">
+<p id="S5.SS1.SSS0.Px4.p1.1" class="ltx_p">Othering is a process through
+ which one constructs an opposition between self/in-group and the 
+other/out-group, by identifying some characteristics that self/in-group 
+has and the other/out-group lacks, or vice versa. Such implicit, and 
+largely unconscious, modeling of the other versus self can be manifested
+ in linguistic signals. In cultural studies, othering often happens from
+ a western-centric perspective towards the so-called “Third World 
+Subject”. For example, “Orientalism” is a pervasive Western 
+tradition—academic and artistic—of prejudiced outsider-interpretations 
+of the Eastern world (such as Asian, Middle Eastern and North African 
+countries)in the service of the Western world (Australasian, Western 
+European, and Northern American countries).</p>
+</div>
+<div id="S5.SS1.SSS0.Px4.p2" class="ltx_para ltx_noindent">
+<p id="S5.SS1.SSS0.Px4.p2.1" class="ltx_p">Our findings reveal that 
+large language models also possess such prejudice. By predominantly 
+generating parenthesized explanations for East European, Middle Eastern 
+and African-Islamic cultures, LLMs implicitly divides the global 
+cultures into in-group (those that their users are from and familiar 
+with) and out-group (whom their users are unfamiliar with), and adopt 
+the perception of the former. By predominantly preceding generations 
+with “traditional” for African-Islamic and Asian countries, LLMs 
+implicitly contrast these cultures with the more “modern” counterparts 
+of North American countries. Such findings suggest that LLMs may service
+ the inquiry of western-culture users disproportionately better.</p>
+</div>
+</section>
+</section>
+<section id="S5.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.2 </span>Diversity of Culture Symbols: a measurement of LLM knowledge of cultural entities</h3>
+
+<figure id="S5.F4" class="ltx_figure">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="S5.F4.sf1" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x8.png" id="S5.F4.sf1.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="199" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(a) </span><span id="S5.F4.sf1.2.1" class="ltx_text ltx_font_typewriter">llama2-13b<math id="S5.F4.sf1.2.1.m1.1" class="ltx_Math" alttext="\cdot" display="inline"><semantics id="S5.F4.sf1.2.1.m1.1b"><mo id="S5.F4.sf1.2.1.m1.1.1" xref="S5.F4.sf1.2.1.m1.1.1.cmml">⋅</mo><annotation-xml encoding="MathML-Content" id="S5.F4.sf1.2.1.m1.1c"><ci id="S5.F4.sf1.2.1.m1.1.1.cmml" xref="S5.F4.sf1.2.1.m1.1.1">⋅</ci></annotation-xml><annotation encoding="application/x-tex" id="S5.F4.sf1.2.1.m1.1d">\cdot</annotation></semantics></math></span> statue</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="S5.F4.sf2" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x9.png" id="S5.F4.sf2.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="200" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(b) </span><span id="S5.F4.sf2.2.1" class="ltx_text ltx_font_typewriter">mistral-7b<math id="S5.F4.sf2.2.1.m1.1" class="ltx_Math" alttext="\cdot" display="inline"><semantics id="S5.F4.sf2.2.1.m1.1b"><mo id="S5.F4.sf2.2.1.m1.1.1" xref="S5.F4.sf2.2.1.m1.1.1.cmml">⋅</mo><annotation-xml encoding="MathML-Content" id="S5.F4.sf2.2.1.m1.1c"><ci id="S5.F4.sf2.2.1.m1.1.1.cmml" xref="S5.F4.sf2.2.1.m1.1.1">⋅</ci></annotation-xml><annotation encoding="application/x-tex" id="S5.F4.sf2.2.1.m1.1d">\cdot</annotation></semantics></math></span> exercise routine</figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4: </span><span id="S5.F4.9.1" class="ltx_text" style="color:#008080;">Teal</span>: Number of diverse culture symbols. <span id="S5.F4.10.2" class="ltx_text" style="color:#FF796C;">Salmon</span>: culture-topic co-occurrence in RedPajama (axis start from top). For <span id="S5.F4.11.3" class="ltx_text ltx_font_typewriter">llama2-13b</span>, higher topic-related keyword co-occurrence correspond to less diverse cultural values (<math id="S5.F4.3.m1.1" class="ltx_Math" alttext="\tau=-0.30" display="inline"><semantics id="S5.F4.3.m1.1b"><mrow id="S5.F4.3.m1.1.1" xref="S5.F4.3.m1.1.1.cmml"><mi id="S5.F4.3.m1.1.1.2" xref="S5.F4.3.m1.1.1.2.cmml">τ</mi><mo id="S5.F4.3.m1.1.1.1" xref="S5.F4.3.m1.1.1.1.cmml">=</mo><mrow id="S5.F4.3.m1.1.1.3" xref="S5.F4.3.m1.1.1.3.cmml"><mo id="S5.F4.3.m1.1.1.3b" xref="S5.F4.3.m1.1.1.3.cmml">−</mo><mn id="S5.F4.3.m1.1.1.3.2" xref="S5.F4.3.m1.1.1.3.2.cmml">0.30</mn></mrow></mrow><annotation-xml encoding="MathML-Content" id="S5.F4.3.m1.1c"><apply id="S5.F4.3.m1.1.1.cmml" xref="S5.F4.3.m1.1.1"><eq id="S5.F4.3.m1.1.1.1.cmml" xref="S5.F4.3.m1.1.1.1"></eq><ci id="S5.F4.3.m1.1.1.2.cmml" xref="S5.F4.3.m1.1.1.2">𝜏</ci><apply id="S5.F4.3.m1.1.1.3.cmml" xref="S5.F4.3.m1.1.1.3"><minus id="S5.F4.3.m1.1.1.3.1.cmml" xref="S5.F4.3.m1.1.1.3"></minus><cn type="float" id="S5.F4.3.m1.1.1.3.2.cmml" xref="S5.F4.3.m1.1.1.3.2">0.30</cn></apply></apply></annotation-xml><annotation encoding="application/x-tex" id="S5.F4.3.m1.1d">\tau=-0.30</annotation></semantics></math>). For <span id="S5.F4.12.4" class="ltx_text ltx_font_typewriter">mistral-7b</span>, higher topic-related keyword co-occurrence correspond to more diverse cultural values (<math id="S5.F4.4.m2.1" class="ltx_Math" alttext="\tau=0.35" display="inline"><semantics id="S5.F4.4.m2.1b"><mrow id="S5.F4.4.m2.1.1" xref="S5.F4.4.m2.1.1.cmml"><mi id="S5.F4.4.m2.1.1.2" xref="S5.F4.4.m2.1.1.2.cmml">τ</mi><mo id="S5.F4.4.m2.1.1.1" xref="S5.F4.4.m2.1.1.1.cmml">=</mo><mn id="S5.F4.4.m2.1.1.3" xref="S5.F4.4.m2.1.1.3.cmml">0.35</mn></mrow><annotation-xml encoding="MathML-Content" id="S5.F4.4.m2.1c"><apply id="S5.F4.4.m2.1.1.cmml" xref="S5.F4.4.m2.1.1"><eq id="S5.F4.4.m2.1.1.1.cmml" xref="S5.F4.4.m2.1.1.1"></eq><ci id="S5.F4.4.m2.1.1.2.cmml" xref="S5.F4.4.m2.1.1.2">𝜏</ci><cn type="float" id="S5.F4.4.m2.1.1.3.cmml" xref="S5.F4.4.m2.1.1.3">0.35</cn></apply></annotation-xml><annotation encoding="application/x-tex" id="S5.F4.4.m2.1d">\tau=0.35</annotation></semantics></math>).</figcaption>
+</figure>
+<section id="S5.SS2.SSS0.Px1" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Measurement.</h4>
+
+<div id="S5.SS2.SSS0.Px1.p1" class="ltx_para ltx_noindent">
+<p id="S5.SS2.SSS0.Px1.p1.1" class="ltx_p">We measure diversity as the 
+number of unique culture symbols that are assigned to a culture. We 
+count all unique culture symbols in one single generation. Table&nbsp;<a href="#A2.F7" title="Figure 7 ‣ Appendix B Culture Symbols ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a> and Table&nbsp;<a href="#A2.F8" title="Figure 8 ‣ Appendix B Culture Symbols ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a> show the distribution of culture symbols for each geographic region.</p>
+</div>
+<figure id="S5.T3" class="ltx_table ltx_align_floatright">
+<table id="S5.T3.3" class="ltx_tabular ltx_centering ltx_align_middle">
+<tbody><tr id="S5.T3.3.1" class="ltx_tr">
+<td id="S5.T3.3.1.1" class="ltx_td ltx_border_tt"></td>
+<td id="S5.T3.3.1.2" class="ltx_td ltx_align_center ltx_border_tt"><span id="S5.T3.3.1.2.1" class="ltx_text ltx_font_typewriter">llama2-13b</span></td>
+<td id="S5.T3.3.1.3" class="ltx_td ltx_align_center ltx_border_tt"><span id="S5.T3.3.1.3.1" class="ltx_text ltx_font_typewriter">mistral-7b</span></td>
+<td id="S5.T3.3.1.4" class="ltx_td ltx_align_center ltx_border_tt"><span id="S5.T3.3.1.4.1" class="ltx_text ltx_font_typewriter">gpt-4</span></td>
+</tr>
+<tr id="S5.T3.3.2" class="ltx_tr">
+<td id="S5.T3.3.2.1" class="ltx_td ltx_align_left ltx_border_t">favorite music</td>
+<td id="S5.T3.3.2.2" class="ltx_td ltx_align_center ltx_border_t"><span id="S5.T3.3.2.2.1" class="ltx_text ltx_font_bold">-0.26</span></td>
+<td id="S5.T3.3.2.3" class="ltx_td ltx_align_center ltx_border_t">0.10</td>
+<td id="S5.T3.3.2.4" class="ltx_td ltx_align_center ltx_border_t">0.03</td>
+</tr>
+<tr id="S5.T3.3.3" class="ltx_tr">
+<td id="S5.T3.3.3.1" class="ltx_td ltx_align_left">music instrument</td>
+<td id="S5.T3.3.3.2" class="ltx_td ltx_align_center"><span id="S5.T3.3.3.2.1" class="ltx_text ltx_font_bold">-0.27</span></td>
+<td id="S5.T3.3.3.3" class="ltx_td ltx_align_center">-0.15</td>
+<td id="S5.T3.3.3.4" class="ltx_td ltx_align_center">-0.11</td>
+</tr>
+<tr id="S5.T3.3.4" class="ltx_tr">
+<td id="S5.T3.3.4.1" class="ltx_td ltx_align_left">exercise routine</td>
+<td id="S5.T3.3.4.2" class="ltx_td ltx_align_center"><span id="S5.T3.3.4.2.1" class="ltx_text ltx_font_bold">-0.29</span></td>
+<td id="S5.T3.3.4.3" class="ltx_td ltx_align_center"><span id="S5.T3.3.4.3.1" class="ltx_text ltx_font_bold">0.35</span></td>
+<td id="S5.T3.3.4.4" class="ltx_td ltx_align_center">-0.18</td>
+</tr>
+<tr id="S5.T3.3.5" class="ltx_tr">
+<td id="S5.T3.3.5.1" class="ltx_td ltx_align_left">favorite show or movie</td>
+<td id="S5.T3.3.5.2" class="ltx_td ltx_align_center">-0.18</td>
+<td id="S5.T3.3.5.3" class="ltx_td ltx_align_center">-0.21</td>
+<td id="S5.T3.3.5.4" class="ltx_td ltx_align_center"><span id="S5.T3.3.5.4.1" class="ltx_text ltx_font_bold">-0.32</span></td>
+</tr>
+<tr id="S5.T3.3.6" class="ltx_tr">
+<td id="S5.T3.3.6.1" class="ltx_td ltx_align_left">food</td>
+<td id="S5.T3.3.6.2" class="ltx_td ltx_align_center">-0.09</td>
+<td id="S5.T3.3.6.3" class="ltx_td ltx_align_center"><span id="S5.T3.3.6.3.1" class="ltx_text ltx_font_bold">0.33</span></td>
+<td id="S5.T3.3.6.4" class="ltx_td ltx_align_center">-0.02</td>
+</tr>
+<tr id="S5.T3.3.7" class="ltx_tr">
+<td id="S5.T3.3.7.1" class="ltx_td ltx_align_left">picture on the front door</td>
+<td id="S5.T3.3.7.2" class="ltx_td ltx_align_center">-0.24</td>
+<td id="S5.T3.3.7.3" class="ltx_td ltx_align_center">0.20</td>
+<td id="S5.T3.3.7.4" class="ltx_td ltx_align_center">-0.15</td>
+</tr>
+<tr id="S5.T3.3.8" class="ltx_tr">
+<td id="S5.T3.3.8.1" class="ltx_td ltx_align_left">statue on the front door</td>
+<td id="S5.T3.3.8.2" class="ltx_td ltx_align_center"><span id="S5.T3.3.8.2.1" class="ltx_text ltx_font_bold">-0.30</span></td>
+<td id="S5.T3.3.8.3" class="ltx_td ltx_align_center">0.13</td>
+<td id="S5.T3.3.8.4" class="ltx_td ltx_align_center">-0.25</td>
+</tr>
+<tr id="S5.T3.3.9" class="ltx_tr">
+<td id="S5.T3.3.9.1" class="ltx_td ltx_align_left ltx_border_bb">clothing</td>
+<td id="S5.T3.3.9.2" class="ltx_td ltx_align_center ltx_border_bb">-0.17</td>
+<td id="S5.T3.3.9.3" class="ltx_td ltx_align_center ltx_border_bb"><span id="S5.T3.3.9.3.1" class="ltx_text ltx_font_bold">0.31</span></td>
+<td id="S5.T3.3.9.4" class="ltx_td ltx_align_center ltx_border_bb">-0.10</td>
+</tr>
+</tbody></table>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 3: </span><span id="S5.T3.2.1" class="ltx_text ltx_font_italic">Kendall <math id="S5.T3.2.1.m1.1" class="ltx_Math" alttext="\tau" display="inline"><semantics id="S5.T3.2.1.m1.1b"><mi id="S5.T3.2.1.m1.1.1" xref="S5.T3.2.1.m1.1.1.cmml">τ</mi><annotation-xml encoding="MathML-Content" id="S5.T3.2.1.m1.1c"><ci id="S5.T3.2.1.m1.1.1.cmml" xref="S5.T3.2.1.m1.1.1">𝜏</ci></annotation-xml><annotation encoding="application/x-tex" id="S5.T3.2.1.m1.1d">\tau</annotation></semantics></math></span> between diversity and culture-topic count. 0.06-0.26: weak-to-moderate correlation; 0.26-0.49: moderate-to-strong correlation (<span id="S5.T3.6.2" class="ltx_text ltx_font_bold">bolded</span>). <span id="S5.T3.7.3" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;has highest diversity-count correlation.</figcaption>
+</figure>
+</section>
+<section id="S5.SS2.SSS0.Px2" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Impact of training data to LLM cultural knowledge.</h4>
+
+<div id="S5.SS2.SSS0.Px2.p1" class="ltx_para ltx_noindent">
+<p id="S5.SS2.SSS0.Px2.p1.1" class="ltx_p">As the community has become 
+aware of the effect of training data on model performance and biases, it
+ is natural to hypothesize that the frequency in which a culture appears
+ in the training data should also impact model’s cultural generations. 
+&nbsp;<cite class="ltx_cite ltx_citemacro_citet">Naous et&nbsp;al. (<a href="#bib.bib18" title="" class="ltx_ref">2023</a>)</cite>
+ discovers n-gram biases towards western-centric content as opposed to 
+Arabic-centric content in Arabic training data, as a factor that impacts
+ multilingual model’s favoritism to western entities.</p>
+</div>
+<div id="S5.SS2.SSS0.Px2.p2" class="ltx_para ltx_noindent">
+<p id="S5.SS2.SSS0.Px2.p2.1" class="ltx_p">Even though we do not have access to the exact training data of &nbsp;<span id="S5.SS2.SSS0.Px2.p2.1.1" class="ltx_text ltx_font_typewriter">gpt-4</span>, <span id="S5.SS2.SSS0.Px2.p2.1.2" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;and <span id="S5.SS2.SSS0.Px2.p2.1.3" class="ltx_text ltx_font_typewriter">mistral-7b</span>, we study the open-source re-creation of the <span id="S5.SS2.SSS0.Px2.p2.1.4" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;training data, RedPajama&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Computer, <a href="#bib.bib3" title="" class="ltx_ref">2023</a>)</cite>. We use the methodology implemented in&nbsp;<cite class="ltx_cite ltx_citemacro_citet">Elazar et&nbsp;al. (<a href="#bib.bib7" title="" class="ltx_ref">2023</a>)</cite>
+ to count the number of documents in RedPajama that contains both the 
+culture name, and any of the topic-related keywords (listed in 
+Table&nbsp;<a href="#A4.T8" title="Table 8 ‣ Appendix D Diversity ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>). See&nbsp;Figure&nbsp;<a href="#A1.F6" title="Figure 6 ‣ Appendix A Countries and Regions ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a> for number of documents that each nationality appears in&nbsp;<span id="footnote5" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">5</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">5</sup><span class="ltx_tag ltx_tag_note">5</span>We found that culture-only occurrence is highly correlated (spearman <math id="footnote5.m1.1" class="ltx_Math" alttext="\rho&gt;0.9" display="inline"><semantics id="footnote5.m1.1b"><mrow id="footnote5.m1.1.1" xref="footnote5.m1.1.1.cmml"><mi id="footnote5.m1.1.1.2" xref="footnote5.m1.1.1.2.cmml">ρ</mi><mo id="footnote5.m1.1.1.1" xref="footnote5.m1.1.1.1.cmml">&gt;</mo><mn id="footnote5.m1.1.1.3" xref="footnote5.m1.1.1.3.cmml">0.9</mn></mrow><annotation-xml encoding="MathML-Content" id="footnote5.m1.1c"><apply id="footnote5.m1.1.1.cmml" xref="footnote5.m1.1.1"><gt id="footnote5.m1.1.1.1.cmml" xref="footnote5.m1.1.1.1"></gt><ci id="footnote5.m1.1.1.2.cmml" xref="footnote5.m1.1.1.2">𝜌</ci><cn type="float" id="footnote5.m1.1.1.3.cmml" xref="footnote5.m1.1.1.3">0.9</cn></apply></annotation-xml><annotation encoding="application/x-tex" id="footnote5.m1.1d">\rho&gt;0.9</annotation></semantics></math>)
+ with culture-topic co-occurrence. Here we only plot culture-only 
+occurrence, while we conduct our study using culture-topic occurrence.</span></span></span>.</p>
+</div>
+</section>
+<section id="S5.SS2.SSS0.Px3" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Moderate-to-strong correlation between culture symbol diversity and culture-topic frequency.</h4>
+
+<div id="S5.SS2.SSS0.Px3.p1" class="ltx_para ltx_noindent">
+<p id="S5.SS2.SSS0.Px3.p1.1" class="ltx_p">We use Kendall-<math id="S5.SS2.SSS0.Px3.p1.1.m1.1" class="ltx_Math" alttext="\tau" display="inline"><semantics id="S5.SS2.SSS0.Px3.p1.1.m1.1a"><mi id="S5.SS2.SSS0.Px3.p1.1.m1.1.1" xref="S5.SS2.SSS0.Px3.p1.1.m1.1.1.cmml">τ</mi><annotation-xml encoding="MathML-Content" id="S5.SS2.SSS0.Px3.p1.1.m1.1b"><ci id="S5.SS2.SSS0.Px3.p1.1.m1.1.1.cmml" xref="S5.SS2.SSS0.Px3.p1.1.m1.1.1">𝜏</ci></annotation-xml><annotation encoding="application/x-tex" id="S5.SS2.SSS0.Px3.p1.1.m1.1c">\tau</annotation></semantics></math> correlation to measure the correlation between diversity and culture-topic co-occurrence&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Schober et&nbsp;al., <a href="#bib.bib25" title="" class="ltx_ref">2018</a>)</cite>.
+The correlation is moderate-to-strong for most of the topics and culture (Table&nbsp;<a href="#S5.T3" title="Table 3 ‣ Measurement. ‣ 5.2 Diversity of Culture Symbols: a measurement of LLM knowledge of cultural entities ‣ 5 LLM Global Culture Perception Analysis ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>). However, <span id="S5.SS2.SSS0.Px3.p1.1.1" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;and <span id="S5.SS2.SSS0.Px3.p1.1.2" class="ltx_text ltx_font_typewriter">mistral-7b</span>&nbsp;show different correlation trends. &nbsp;Figure&nbsp;<a href="#S5.F4" title="Figure 4 ‣ 5.2 Diversity of Culture Symbols: a measurement of LLM knowledge of cultural entities ‣ 5 LLM Global Culture Perception Analysis ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a> shows negative correlation for <span id="S5.SS2.SSS0.Px3.p1.1.3" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;on “statue”, while <span id="S5.SS2.SSS0.Px3.p1.1.4" class="ltx_text ltx_font_typewriter">mistral-7b</span>&nbsp;has positive correlation for exercise routine. One potential reason may due to the calibration performed on <span id="S5.SS2.SSS0.Px3.p1.1.5" class="ltx_text ltx_font_typewriter">mistral-7b</span>. We discuss other factors that impact the correlation in Section&nbsp;<a href="#S6" title="6 Discussion ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a>.</p>
+</div>
+</section>
+</section>
+<section id="S5.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.3 </span>Presence in culture-agnostic generations: examining the default culture symbols.</h3>
+
+<div id="S5.SS3.p1" class="ltx_para ltx_noindent">
+<p id="S5.SS3.p1.1" class="ltx_p">By examining the culture symbols that 
+models select to generate when conditioning on no culture, we reveal 
+what are the default understanding on each topic by the model, and, if 
+such symbols overlap with any culture’s culture symbols.</p>
+</div>
+<section id="S5.SS3.SSS0.Px1" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Culture-agnostic generations.</h4>
+
+<div id="S5.SS3.SSS0.Px1.p1" class="ltx_para ltx_noindent">
+<p id="S5.SS3.SSS0.Px1.p1.1" class="ltx_p">We extract the default symbols for each topic using the same prompts in Table&nbsp;<a href="#S3.T1" title="Table 1 ‣ 3 Collection of Culture-Gen ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>,
+ but the nationality is not revealed in the instruction. For each topic,
+ we also generate 100 samples using the same hyperparameters as 
+described in Section&nbsp;<a href="#S3" title="3 Collection of Culture-Gen ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>.</p>
+</div>
+</section>
+<section id="S5.SS3.SSS0.Px2" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Geographic discrepancy in presence in culture-agnostic generations.</h4>
+
+<div id="S5.SS3.SSS0.Px2.p1" class="ltx_para ltx_noindent">
+<p id="S5.SS3.SSS0.Px2.p1.1" class="ltx_p">Figure&nbsp;<a href="#S5.F5" title="Figure 5 ‣ Geographic discrepancy in presence in culture-agnostic generations. ‣ 5.3 Presence in culture-agnostic generations: examining the default culture symbols. ‣ 5 LLM Global Culture Perception Analysis ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a> shows the overlap rate of <span id="S5.SS3.SSS0.Px2.p1.1.1" class="ltx_text ltx_font_typewriter">gpt-4</span>&nbsp;and <span id="S5.SS3.SSS0.Px2.p1.1.2" class="ltx_text ltx_font_typewriter">mistral-7b</span>. <span id="S5.SS3.SSS0.Px2.p1.1.3" class="ltx_text ltx_font_typewriter">mistral-7b</span>&nbsp;in general has higher overlap rate than <span id="S5.SS3.SSS0.Px2.p1.1.4" class="ltx_text ltx_font_typewriter">gpt-4</span>, very likely because <span id="S5.SS3.SSS0.Px2.p1.1.5" class="ltx_text ltx_font_typewriter">gpt-4</span>&nbsp;has more culture-topical knowledge than <span id="S5.SS3.SSS0.Px2.p1.1.6" class="ltx_text ltx_font_typewriter">mistral-7b</span>. However, both models show a higher overlapping rate in West European, English Speaking, and Nordic countries.</p>
+</div>
+<figure id="S5.F5" class="ltx_figure">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="S5.F5.sf1" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x10.png" id="S5.F5.sf1.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="232" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(a) </span><span id="S5.F5.sf1.2.1" class="ltx_text ltx_font_typewriter">gpt-4</span></figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="S5.F5.sf2" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x11.png" id="S5.F5.sf2.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="231" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(b) </span><span id="S5.F5.sf2.2.1" class="ltx_text ltx_font_typewriter">mistral-7b</span></figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 5: </span>Overlap in “music instrument”. In general, <span id="S5.F5.4.1" class="ltx_text ltx_font_typewriter">mistral-7b</span>’s culture-conditioned generations have higher overlap rate to culture-agnostic generations. For both <span id="S5.F5.5.2" class="ltx_text ltx_font_typewriter">gpt-4</span>&nbsp;and <span id="S5.F5.6.3" class="ltx_text ltx_font_typewriter">mistral-7b</span>, West European, English Speaking and Nordic countreis have the highest overlap rate.</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">6 </span>Discussion</h2>
+
+<div id="S6.p1" class="ltx_para ltx_noindent">
+<p id="S6.p1.1" class="ltx_p">In this section, we provide our insights 
+on results from this paper, discuss potential improvements to 
+methodology, and suggest future directions on cultural generation 
+analysis.</p>
+</div>
+<section id="S6.SS0.SSS0.Px1" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Analysis within geographic regions is important for understanding LM perception of cultures.</h4>
+
+<div id="S6.SS0.SSS0.Px1.p1" class="ltx_para ltx_noindent">
+<p id="S6.SS0.SSS0.Px1.p1.1" class="ltx_p">From number of unique culture
+ symbols to percentage of overlapping culture symbols with 
+culture-agnostic generations, we notice a high variance within each 
+geographic region. While most works on culture bias come to the 
+conclusion of a Western versus Eastern dichotomy, the community should 
+not neglect cultures that have a nonetheless regional impact. For 
+example, <span id="S6.SS0.SSS0.Px1.p1.1.1" class="ltx_text ltx_font_italic">“qi gong”</span>
+ as an exercise routine is generated and recognized as a culture symbol 
+for “Austrian”, ”Chinese”, ”Macanese”, ”Malaysian”, ”Singaporean”, 
+”Taiwanese” by <span id="S6.SS0.SSS0.Px1.p1.1.2" class="ltx_text ltx_font_typewriter">mistral-7b</span>,
+ where 5 out of the 6 nationalities are in East Asia and Southeast Asia 
+that have closely related cultures; on the other hand, “swimming” is 
+generated and recognized as a culture symbol for 46 nationalities 
+spanning across all geographic regions. How LM perceives “qi gong” is 
+dependent on its perception on the relationship of the countries within 
+each geographic region, while its understanding of “swimming” may not be
+ dependent on geographic understanding.</p>
+</div>
+</section>
+<section id="S6.SS0.SSS0.Px2" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Pros and Cons of methodologies for assigning of culture symbols.</h4>
+
+<div id="S6.SS0.SSS0.Px2.p1" class="ltx_para ltx_noindent">
+<p id="S6.SS0.SSS0.Px2.p1.1" class="ltx_p"><cite class="ltx_cite ltx_citemacro_citet">Naous et&nbsp;al. (<a href="#bib.bib18" title="" class="ltx_ref">2023</a>)</cite>
+ collected Arabic and Western “cultural entities” by scraping from 
+WikiData and labeling with human annotators from the Arabic culture. 
+While this approach obtains more accurate categorization of culture 
+symbols, it is limited to the cultures from which high-quality human 
+annotations are available, and thereby also limiting culture-bias 
+research to such cultures. Our approach of automatically extracting 
+culture symbol from cultural generations can encompass any culture of 
+interest, although it currently cannot handle the boundary between “what
+ is a possible answer for a culture” versus “what the people from that 
+culture view as representative to their culture”. For example, in <span id="S6.SS0.SSS0.Px2.p1.1.1" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>&nbsp;“jogging”
+ and “modern exercise” are generated and categorized as culture symbols 
+for many cultures, as well as in culture-agnostic generations, even 
+though such exercises may not be specific to any subset of cultures.</p>
+</div>
+</section>
+<section id="S6.SS0.SSS0.Px3" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Simply asking a model to listing cultural symbols does not truly evaluate LM’s cultural perception.</h4>
+
+<div id="S6.SS0.SSS0.Px3.p1" class="ltx_para ltx_noindent">
+<p id="S6.SS0.SSS0.Px3.p1.1" class="ltx_p">Works on collecting commonsense knowledge-base&nbsp;<cite class="ltx_cite ltx_citemacro_cite">Petroni et&nbsp;al. (<a href="#bib.bib22" title="" class="ltx_ref">2019</a>); West et&nbsp;al. (<a href="#bib.bib30" title="" class="ltx_ref">2022</a>)</cite>
+ prompt the language models to generate knowledge through a listing 
+manner (eg. “Please write 20 short sentences about …”), and has been 
+applied to generating cultural commonsense knowedge&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Nguyen et&nbsp;al., <a href="#bib.bib20" title="" class="ltx_ref">2023b</a>)</cite>.
+ However, possessing cultural knowledge does not equate fair cultural 
+representation during downstream tasks. For example, in tasks such as 
+story generation or persona writing, models may resort to using cultural
+ symbols that do not belong to a culture. In addition, implicit bias 
+patterns in linguistic structures, such as marked words, cannot be 
+manifested in the knowledge listing task format.</p>
+</div>
+</section>
+<section id="S6.SS0.SSS0.Px4" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">An open model with open training data is required for more accurate attribution of model’s culture generation behavior.</h4>
+
+<div id="S6.SS0.SSS0.Px4.p1" class="ltx_para ltx_noindent">
+<p id="S6.SS0.SSS0.Px4.p1.1" class="ltx_p">Since we are unable to get the exact training data for <span id="S6.SS0.SSS0.Px4.p1.1.1" class="ltx_text ltx_font_typewriter">gpt-4</span>, <span id="S6.SS0.SSS0.Px4.p1.1.2" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;or <span id="S6.SS0.SSS0.Px4.p1.1.3" class="ltx_text ltx_font_typewriter">mistral-7b</span>,
+ all analysis conducted on RedPajama remain as a conjecture. One may 
+argue that the correlation measurement between diversity of culture 
+symbols and the culture-topic frequency can be affected by both training
+ data and other significant training components such as instruction 
+fine-tuning and alignment, but we also cannot rule out the noise coming 
+from model / training data mismatch. OLMo&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Groeneveld et&nbsp;al., <a href="#bib.bib10" title="" class="ltx_ref">2024</a>)</cite> is the only large language model that has completely open-sourced training set&nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Soldaini et&nbsp;al., <a href="#bib.bib26" title="" class="ltx_ref">2024</a>)</cite>, and is the most fitting experiment ground for future work to perform culture perception analyses.</p>
+</div>
+</section>
+<section id="S6.SS0.SSS0.Px5" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Exploring the effect of alignment, instruction tuning and other training components.</h4>
+
+<div id="S6.SS0.SSS0.Px5.p1" class="ltx_para ltx_noindent">
+<p id="S6.SS0.SSS0.Px5.p1.1" class="ltx_p">As state-of-the-art large 
+language models are trained with more components than supervised 
+fine-tuning, as such alignmnent and instruction tuning, it is important 
+to also understand how such factors affect model’s demonstrated cultural
+ perceptions. While <span id="S6.SS0.SSS0.Px5.p1.1.1" class="ltx_text ltx_font_typewriter">gpt-4</span>&nbsp;is
+ the aligned model out of the three models we generated from, the shear 
+difference in size does now allow us to do any comparison between the 
+models to study the effect of alignment. Within the scope of our work, 
+we were unable to elicit any valid response from aligned versions of <span id="S6.SS0.SSS0.Px5.p1.1.2" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;(<span id="S6.SS0.SSS0.Px5.p1.1.3" class="ltx_text ltx_font_typewriter">llama2-13b-chat</span>) or <span id="S6.SS0.SSS0.Px5.p1.1.4" class="ltx_text ltx_font_typewriter">mistral-7b</span>&nbsp;(<span id="S6.SS0.SSS0.Px5.p1.1.5" class="ltx_text ltx_font_typewriter">mistral-7b-instruct</span>)
+ because of the safeguard measures. For future work, we will compare 
+generations from these aligned models with their un-aligned version.</p>
+</div>
+<div id="S6.SS0.SSS0.Px5.p2" class="ltx_para ltx_noindent">
+<p id="S6.SS0.SSS0.Px5.p2.1" class="ltx_p">In addition to alignment, different sampling methods and model sizes are also factors that should be evaluated in future work.</p>
+</div>
+</section>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7 </span>Conclusion</h2>
+
+<div id="S7.p1" class="ltx_para ltx_noindent">
+<p id="S7.p1.1" class="ltx_p">In our work, we proposed a framework that 
+extracts global cultural perceptions from three SOTA models on 110 
+countries and regions on 8 culture-
+related topics through culture-conditioned generations, and demonstrated
+ how to extract culture symbols from these generations using an 
+unsupervised sentence probability ranking method. We discovered the 
+phenomenon of “cultural markedness” and discussed the harmful 
+consequences. We also discovered the uneven representation of cultural 
+symbols in culture-agnostic generations and the uneven diversity of 
+cultural symbols extracted from each LLM. Lastly, we discussed future 
+directions of exploration. Our findings promote
+further research in studying the knowledge and fairness of global 
+culture
+perception in LLMs.</p>
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+</section>
+<section id="bib" class="ltx_bibliography">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+
+<ul class="ltx_biblist">
+<li id="bib.bib1" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">AlKhamissi et&nbsp;al. (2024)</span>
+<span class="ltx_bibblock">
+Badr AlKhamissi, Muhammad ElNokrashy, Mai AlKhamissi, and Mona Diab.
+
+</span>
+<span class="ltx_bibblock">Investigating cultural alignment of large language models.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib1.1.1" class="ltx_emph ltx_font_italic">arXiv preprint arXiv:2402.13231</em>, 2024.
+
+</span>
+</li>
+<li id="bib.bib2" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Cheng et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Myra Cheng, Esin Durmus, and Dan Jurafsky.
+
+</span>
+<span class="ltx_bibblock">Marked personas: Using natural language prompts to measure stereotypes in language models.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib2.1.1" class="ltx_emph ltx_font_italic">arXiv preprint arXiv:2305.18189</em>, 2023.
+
+</span>
+</li>
+<li id="bib.bib3" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Computer (2023)</span>
+<span class="ltx_bibblock">
+Together Computer.
+
+</span>
+<span class="ltx_bibblock">Redpajama: an open dataset for training large language models, October 2023.
+
+</span>
+<span class="ltx_bibblock">URL <a target="_blank" href="https://github.com/togethercomputer/RedPajama-Data" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://github.com/togethercomputer/RedPajama-Data</a>.
+
+</span>
+</li>
+<li id="bib.bib4" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Deas et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Nicholas Deas, Jessica&nbsp;A. Grieser, Shana Kleiner, Desmond&nbsp;Upton Patton, Elsbeth Turcan, and Kathleen McKeown.
+
+</span>
+<span class="ltx_bibblock">Evaluation of african american language bias in natural language generation.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib4.1.1" class="ltx_emph ltx_font_italic">ArXiv</em>, abs/2305.14291, 2023.
+
+</span>
+<span class="ltx_bibblock">URL <a target="_blank" href="https://api.semanticscholar.org/CorpusID:258841278" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://api.semanticscholar.org/CorpusID:258841278</a>.
+
+</span>
+</li>
+<li id="bib.bib5" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Durmus et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Esin Durmus, Karina Nyugen, Thomas Liao, Nicholas Schiefer, Amanda 
+Askell, Anton Bakhtin, Carol Chen, Zac Hatfield-Dodds, Danny Hernandez, 
+Nicholas Joseph, Liane Lovitt, Sam McCandlish, Orowa Sikder, Alex 
+Tamkin, Janel Thamkul, Jared Kaplan, Jack Clark, and Deep Ganguli.
+
+</span>
+<span class="ltx_bibblock">Towards measuring the representation of subjective global opinions in language models.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib5.1.1" class="ltx_emph ltx_font_italic">ArXiv</em>, abs/2306.16388, 2023.
+
+</span>
+</li>
+<li id="bib.bib6" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Dwivedi et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Ashutosh Dwivedi, Pradhyumna Lavania, and Ashutosh Modi.
+
+</span>
+<span class="ltx_bibblock">Eticor: Corpus for analyzing llms for etiquettes.
+
+</span>
+<span class="ltx_bibblock">In <em id="bib.bib6.1.1" class="ltx_emph ltx_font_italic">Conference on Empirical Methods in Natural Language Processing</em>, 2023.
+
+</span>
+</li>
+<li id="bib.bib7" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Elazar et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Yanai Elazar, Akshita Bhagia, Ian Magnusson, Abhilasha Ravichander, 
+Dustin Schwenk, Alane Suhr, Pete Walsh, Dirk Groeneveld, Luca Soldaini, 
+Sameer Singh, et&nbsp;al.
+
+</span>
+<span class="ltx_bibblock">What’s in my big data?
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib7.1.1" class="ltx_emph ltx_font_italic">arXiv preprint arXiv:2310.20707</em>, 2023.
+
+</span>
+</li>
+<li id="bib.bib8" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Fung et&nbsp;al. (2024)</span>
+<span class="ltx_bibblock">
+Yi&nbsp;Ren Fung, Ruining Zhao, Jae Doo, Chenkai Sun, and Heng Ji.
+
+</span>
+<span class="ltx_bibblock">Massively multi-cultural knowledge acquisition &amp; lm benchmarking.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib8.1.1" class="ltx_emph ltx_font_italic">ArXiv</em>, abs/2402.09369, 2024.
+
+</span>
+<span class="ltx_bibblock">URL <a target="_blank" href="https://api.semanticscholar.org/CorpusID:267657749" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://api.semanticscholar.org/CorpusID:267657749</a>.
+
+</span>
+</li>
+<li id="bib.bib9" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Geertz (1973)</span>
+<span class="ltx_bibblock">
+Clifford Geertz.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib9.1.1" class="ltx_emph ltx_font_italic">The interpretation of cultures</em>, volume 5019.
+
+</span>
+<span class="ltx_bibblock">Basic books, 1973.
+
+</span>
+</li>
+<li id="bib.bib10" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Groeneveld et&nbsp;al. (2024)</span>
+<span class="ltx_bibblock">
+Dirk Groeneveld, Iz&nbsp;Beltagy, Pete Walsh, Akshita Bhagia, Rodney 
+Kinney, Oyvind Tafjord, Ananya&nbsp;Harsh Jha, Hamish Ivison, Ian 
+Magnusson, Yizhong Wang, et&nbsp;al.
+
+</span>
+<span class="ltx_bibblock">Olmo: Accelerating the science of language models.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib10.1.1" class="ltx_emph ltx_font_italic">arXiv preprint arXiv:2402.00838</em>, 2024.
+
+</span>
+</li>
+<li id="bib.bib11" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Haerpfer &amp; Kizilova (2012)</span>
+<span class="ltx_bibblock">
+Christian&nbsp;W Haerpfer and Kseniya Kizilova.
+
+</span>
+<span class="ltx_bibblock">The world values survey.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib11.1.1" class="ltx_emph ltx_font_italic">The Wiley-Blackwell Encyclopedia of Globalization</em>, pp.&nbsp; 1–5, 2012.
+
+</span>
+</li>
+<li id="bib.bib12" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Huang &amp; Yang (2023)</span>
+<span class="ltx_bibblock">
+Jing Huang and Diyi Yang.
+
+</span>
+<span class="ltx_bibblock">Culturally aware natural language inference.
+
+</span>
+<span class="ltx_bibblock">In <em id="bib.bib12.1.1" class="ltx_emph ltx_font_italic">Findings of the Association for Computational Linguistics: EMNLP 2023</em>, pp.&nbsp; 7591–7609, 2023.
+
+</span>
+</li>
+<li id="bib.bib13" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Keleg &amp; Magdy (2023)</span>
+<span class="ltx_bibblock">
+Amr Keleg and Walid Magdy.
+
+</span>
+<span class="ltx_bibblock">Dlama: A framework for curating culturally diverse facts for probing the knowledge of pretrained language models.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib13.1.1" class="ltx_emph ltx_font_italic">arXiv preprint arXiv:2306.05076</em>, 2023.
+
+</span>
+</li>
+<li id="bib.bib14" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Khandelwal et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Khyati Khandelwal, Manuel Tonneau, Andrew&nbsp;M. Bean, Hannah&nbsp;Rose Kirk, and Scott&nbsp;A. Hale.
+
+</span>
+<span class="ltx_bibblock">Casteist but not racist? quantifying disparities in large language model bias between india and the west.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib14.1.1" class="ltx_emph ltx_font_italic">ArXiv</em>, abs/2309.08573, 2023.
+
+</span>
+</li>
+<li id="bib.bib15" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Li et&nbsp;al. (2024)</span>
+<span class="ltx_bibblock">
+Cheng Li, Mengzhou Chen, Jindong Wang, Sunayana Sitaram, and Xing Xie.
+
+</span>
+<span class="ltx_bibblock">Culturellm: Incorporating cultural differences into large language models.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib15.1.1" class="ltx_emph ltx_font_italic">ArXiv</em>, abs/2402.10946, 2024.
+
+</span>
+<span class="ltx_bibblock">URL <a target="_blank" href="https://api.semanticscholar.org/CorpusID:267750997" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://api.semanticscholar.org/CorpusID:267750997</a>.
+
+</span>
+</li>
+<li id="bib.bib16" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Ma et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Weicheng Ma, Brian Chiang, Tong Wu, Lili Wang, and Soroush Vosoughi.
+
+</span>
+<span class="ltx_bibblock">Intersectional stereotypes in large language models: Dataset and analysis.
+
+</span>
+<span class="ltx_bibblock">In Houda Bouamor, Juan Pino, and Kalika Bali (eds.), <em id="bib.bib16.1.1" class="ltx_emph ltx_font_italic">Findings of the Association for Computational Linguistics: EMNLP 2023</em>, pp.&nbsp; 8589–8597, Singapore, December 2023. Association for Computational Linguistics.
+
+</span>
+<span class="ltx_bibblock">doi: <span class="ltx_ref ltx_nolink ltx_Url ltx_ref_self">10.18653/v1/2023.findings-emnlp.575</span>.
+
+</span>
+<span class="ltx_bibblock">URL <a target="_blank" href="https://aclanthology.org/2023.findings-emnlp.575" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://aclanthology.org/2023.findings-emnlp.575</a>.
+
+</span>
+</li>
+<li id="bib.bib17" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Mukherjee et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Anjishnu Mukherjee, Chahat Raj, Ziwei Zhu, and Antonios Anastasopoulos.
+
+</span>
+<span class="ltx_bibblock">Global voices, local biases: Socio-cultural prejudices across languages.
+
+</span>
+<span class="ltx_bibblock">In <em id="bib.bib17.1.1" class="ltx_emph ltx_font_italic">Conference on Empirical Methods in Natural Language Processing</em>, 2023.
+
+</span>
+</li>
+<li id="bib.bib18" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Naous et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Tarek Naous, Michael&nbsp;J Ryan, and Wei Xu.
+
+</span>
+<span class="ltx_bibblock">Having beer after prayer? measuring cultural bias in large language models.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib18.1.1" class="ltx_emph ltx_font_italic">arXiv preprint arXiv:2305.14456</em>, 2023.
+
+</span>
+</li>
+<li id="bib.bib19" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Nguyen et&nbsp;al. (2023a)</span>
+<span class="ltx_bibblock">
+Tuan-Phong Nguyen, Simon Razniewski, Aparna Varde, and Gerhard Weikum.
+
+</span>
+<span class="ltx_bibblock">Extracting cultural commonsense knowledge at scale.
+
+</span>
+<span class="ltx_bibblock">In <em id="bib.bib19.1.1" class="ltx_emph ltx_font_italic">Proceedings of the ACM Web Conference 2023</em>, WWW ’23. ACM, April 2023a.
+
+</span>
+<span class="ltx_bibblock">doi: <span class="ltx_ref ltx_nolink ltx_Url ltx_ref_self">10.1145/3543507.3583535</span>.
+
+</span>
+<span class="ltx_bibblock">URL <a target="_blank" href="http://dx.doi.org/10.1145/3543507.3583535" title="" class="ltx_ref ltx_url ltx_font_typewriter">http://dx.doi.org/10.1145/3543507.3583535</a>.
+
+</span>
+</li>
+<li id="bib.bib20" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Nguyen et&nbsp;al. (2023b)</span>
+<span class="ltx_bibblock">
+Tuan-Phong Nguyen, Simon Razniewski, Aparna Varde, and Gerhard Weikum.
+
+</span>
+<span class="ltx_bibblock">Extracting cultural commonsense knowledge at scale.
+
+</span>
+<span class="ltx_bibblock">In <em id="bib.bib20.1.1" class="ltx_emph ltx_font_italic">Proceedings of the ACM Web Conference 2023</em>, pp.&nbsp; 1907–1917, 2023b.
+
+</span>
+</li>
+<li id="bib.bib21" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Palta &amp; Rudinger (2023)</span>
+<span class="ltx_bibblock">
+Shramay Palta and Rachel Rudinger.
+
+</span>
+<span class="ltx_bibblock">Fork: A bite-sized test set for probing culinary cultural biases in commonsense reasoning models.
+
+</span>
+<span class="ltx_bibblock">In <em id="bib.bib21.1.1" class="ltx_emph ltx_font_italic">Findings of the Association for Computational Linguistics: ACL 2023</em>, pp.&nbsp; 9952–9962, 2023.
+
+</span>
+</li>
+<li id="bib.bib22" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Petroni et&nbsp;al. (2019)</span>
+<span class="ltx_bibblock">
+Fabio Petroni, Tim Rocktäschel, Patrick Lewis, Anton Bakhtin, Yuxiang Wu, Alexander&nbsp;H Miller, and Sebastian Riedel.
+
+</span>
+<span class="ltx_bibblock">Language models as knowledge bases?
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib22.1.1" class="ltx_emph ltx_font_italic">arXiv preprint arXiv:1909.01066</em>, 2019.
+
+</span>
+</li>
+<li id="bib.bib23" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Ramezani &amp; Xu (2023)</span>
+<span class="ltx_bibblock">
+Aida Ramezani and Yang Xu.
+
+</span>
+<span class="ltx_bibblock">Knowledge of cultural moral norms in large language models.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib23.1.1" class="ltx_emph ltx_font_italic">arXiv preprint arXiv:2306.01857</em>, 2023.
+
+</span>
+</li>
+<li id="bib.bib24" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Ryan et&nbsp;al. (2024)</span>
+<span class="ltx_bibblock">
+Michael&nbsp;J Ryan, William Held, and Diyi Yang.
+
+</span>
+<span class="ltx_bibblock">Unintended impacts of llm alignment on global representation.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib24.1.1" class="ltx_emph ltx_font_italic">arXiv preprint arXiv:2402.15018</em>, 2024.
+
+</span>
+</li>
+<li id="bib.bib25" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Schober et&nbsp;al. (2018)</span>
+<span class="ltx_bibblock">
+Patrick Schober, Christa Boer, and Lothar&nbsp;A Schwarte.
+
+</span>
+<span class="ltx_bibblock">Correlation coefficients: appropriate use and interpretation.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib25.1.1" class="ltx_emph ltx_font_italic">Anesthesia &amp; analgesia</em>, 126(5):1763–1768, 2018.
+
+</span>
+</li>
+<li id="bib.bib26" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Soldaini et&nbsp;al. (2024)</span>
+<span class="ltx_bibblock">
+Luca Soldaini, Rodney Kinney, Akshita Bhagia, Dustin Schwenk, David 
+Atkinson, Russell Authur, Ben Bogin, Khyathi Chandu, Jennifer Dumas, 
+Yanai Elazar, et&nbsp;al.
+
+</span>
+<span class="ltx_bibblock">Dolma: An open corpus of three trillion tokens for language model pretraining research.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib26.1.1" class="ltx_emph ltx_font_italic">arXiv preprint arXiv:2402.00159</em>, 2024.
+
+</span>
+</li>
+<li id="bib.bib27" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Tang et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Raphael Tang, Xinyu&nbsp;Crystina Zhang, Jimmy&nbsp;J. Lin, and Ferhan Ture.
+
+</span>
+<span class="ltx_bibblock">What do llamas really think? revealing preference biases in language model representations.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib27.1.1" class="ltx_emph ltx_font_italic">ArXiv</em>, abs/2311.18812, 2023.
+
+</span>
+</li>
+<li id="bib.bib28" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Tao et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Yan Tao, Olga Viberg, Ryan&nbsp;S. Baker, and Rene&nbsp;F. Kizilcec.
+
+</span>
+<span class="ltx_bibblock">Auditing and mitigating cultural bias in llms, 2023.
+
+</span>
+</li>
+<li id="bib.bib29" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Waugh (1982)</span>
+<span class="ltx_bibblock">
+Linda&nbsp;R Waugh.
+
+</span>
+<span class="ltx_bibblock">Marked and unmarked: A choice between unequals in semiotic structure.
+
+</span>
+<span class="ltx_bibblock">1982.
+
+</span>
+</li>
+<li id="bib.bib30" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">West et&nbsp;al. (2022)</span>
+<span class="ltx_bibblock">
+Peter West, Chandra Bhagavatula, Jack Hessel, Jena Hwang, Liwei Jiang, 
+Ronan Le&nbsp;Bras, Ximing Lu, Sean Welleck, and Yejin Choi.
+
+</span>
+<span class="ltx_bibblock">Symbolic knowledge distillation: from general language models to commonsense models.
+
+</span>
+<span class="ltx_bibblock">In <em id="bib.bib30.1.1" class="ltx_emph ltx_font_italic">Proceedings
+ of the 2022 Conference of the North American Chapter of the Association
+ for Computational Linguistics: Human Language Technologies</em>, pp.&nbsp; 4602–4625, 2022.
+
+</span>
+</li>
+<li id="bib.bib31" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Wibowo et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Haryo&nbsp;Akbarianto Wibowo, Erland&nbsp;Hilman Fuadi, 
+Made&nbsp;Nindyatama Nityasya, Radityo&nbsp;Eko Prasojo, and 
+Alham&nbsp;Fikri Aji.
+
+</span>
+<span class="ltx_bibblock">Copal-id: Indonesian language reasoning with local culture and nuances.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib31.1.1" class="ltx_emph ltx_font_italic">ArXiv</em>, abs/2311.01012, 2023.
+
+</span>
+<span class="ltx_bibblock">URL <a target="_blank" href="https://api.semanticscholar.org/CorpusID:264935209" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://api.semanticscholar.org/CorpusID:264935209</a>.
+
+</span>
+</li>
+<li id="bib.bib32" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Yin et&nbsp;al. (2022)</span>
+<span class="ltx_bibblock">
+Da&nbsp;Yin, Hritik Bansal, Masoud Monajatipoor, Liunian&nbsp;Harold Li, and Kai-Wei Chang.
+
+</span>
+<span class="ltx_bibblock">Geomlama: Geo-diverse commonsense probing on multilingual pre-trained language models.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib32.1.1" class="ltx_emph ltx_font_italic">arXiv preprint arXiv:2205.12247</em>, 2022.
+
+</span>
+</li>
+<li id="bib.bib33" class="ltx_bibitem">
+<span class="ltx_tag ltx_role_refnum ltx_tag_bibitem">Ziems et&nbsp;al. (2023)</span>
+<span class="ltx_bibblock">
+Caleb Ziems, Jane Dwivedi-Yu, Yi-Chia Wang, Alon Halevy, and Diyi Yang.
+
+</span>
+<span class="ltx_bibblock">Normbank: A knowledge bank of situational social norms.
+
+</span>
+<span class="ltx_bibblock"><em id="bib.bib33.1.1" class="ltx_emph ltx_font_italic">arXiv preprint arXiv:2305.17008</em>, 2023.
+
+</span>
+</li>
+</ul>
+</section>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<section id="Sx1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">Reproducibility statement</h2>
+
+<section id="Sx1.SS0.SSS0.Px1" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Data Collection.</h4>
+
+<div id="Sx1.SS0.SSS0.Px1.p1" class="ltx_para ltx_noindent">
+<p id="Sx1.SS0.SSS0.Px1.p1.1" class="ltx_p">We provide accurate 
+description of our natural language prompts and hyperparameter settings 
+for collecting culture generations of <span id="Sx1.SS0.SSS0.Px1.p1.1.1" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>&nbsp;in Section&nbsp;<a href="#S3" title="3 Collection of Culture-Gen ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>. We also provide accurate description of extracting culture symbols in Section&nbsp;<a href="#S4" title="4 Finding Culture Symbols in Culture-Gen ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a></p>
+</div>
+</section>
+<section id="Sx1.SS0.SSS0.Px2" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Data and Source Code.</h4>
+
+<div id="Sx1.SS0.SSS0.Px2.p1" class="ltx_para ltx_noindent">
+<p id="Sx1.SS0.SSS0.Px2.p1.1" class="ltx_p"><span id="Sx1.SS0.SSS0.Px2.p1.1.1" class="ltx_text ltx_font_smallcaps">Culture-Gen</span>&nbsp;and all source code for generation and analysis will be released after acceptance to conference.</p>
+</div>
+</section>
+</section>
+<section id="Sx2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">Ethics Statement</h2>
+
+<section id="Sx2.SS0.SSS0.Px1" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Data.</h4>
+
+<div id="Sx2.SS0.SSS0.Px1.p1" class="ltx_para ltx_noindent">
+<p id="Sx2.SS0.SSS0.Px1.p1.1" class="ltx_p">All data we collected through LLMs in our work are released publicly for usage and have been duly scrutinized by the authors.</p>
+</div>
+</section>
+<section id="Sx2.SS0.SSS0.Px2" class="ltx_paragraph">
+<h4 class="ltx_title ltx_title_paragraph">Potential Use.</h4>
+
+<div id="Sx2.SS0.SSS0.Px2.p1" class="ltx_para ltx_noindent">
+<p id="Sx2.SS0.SSS0.Px2.p1.1" class="ltx_p">Our data, collection and 
+evaluation framework may only be used for applications that follow the 
+ethics guideline of the community. Using our prompts on mal-intention-ed
+ rules or searching for toxic and harmful values is a potential threat, 
+but the authors strongly condemn doing so.</p>
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+</section>
+</section>
+<section id="A1" class="ltx_appendix">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix A </span>Countries and Regions</h2>
+
+<figure id="A1.T4" class="ltx_table">
+<table id="A1.T4.1" class="ltx_tabular ltx_centering ltx_align_middle">
+<tbody><tr id="A1.T4.1.1" class="ltx_tr">
+<td id="A1.T4.1.1.1" class="ltx_td ltx_align_center ltx_border_tt"><span id="A1.T4.1.1.1.1" class="ltx_text ltx_font_bold">Geographic Region</span></td>
+<td id="A1.T4.1.1.2" class="ltx_td ltx_align_left ltx_border_tt"><span id="A1.T4.1.1.2.1" class="ltx_text ltx_font_bold">Countries and Regions</span></td>
+</tr>
+<tr id="A1.T4.1.2" class="ltx_tr">
+<td id="A1.T4.1.2.1" class="ltx_td ltx_align_center ltx_border_t">Eastern-European</td>
+<td id="A1.T4.1.2.2" class="ltx_td ltx_align_left ltx_border_t">Albania, Armenia, Belarus, Bosnia and Herzegovina, Bulgaria,</td>
+</tr>
+<tr id="A1.T4.1.3" class="ltx_tr">
+<td id="A1.T4.1.3.1" class="ltx_td"></td>
+<td id="A1.T4.1.3.2" class="ltx_td ltx_align_left">Croatia, Czechia, Georgia, Greece, Hungary, Kosovo,</td>
+</tr>
+<tr id="A1.T4.1.4" class="ltx_tr">
+<td id="A1.T4.1.4.1" class="ltx_td"></td>
+<td id="A1.T4.1.4.2" class="ltx_td ltx_align_left">Moldova, Montenegro, North Macedonia, Poland, Romania,</td>
+</tr>
+<tr id="A1.T4.1.5" class="ltx_tr">
+<td id="A1.T4.1.5.1" class="ltx_td"></td>
+<td id="A1.T4.1.5.2" class="ltx_td ltx_align_left">Russia, Serbia, Slovakia, Slovenia, Turkey, Ukraine</td>
+</tr>
+<tr id="A1.T4.1.6" class="ltx_tr">
+<td id="A1.T4.1.6.1" class="ltx_td ltx_align_center">African-Islamic</td>
+<td id="A1.T4.1.6.2" class="ltx_td ltx_align_left">Algeria, Egypt, Ethiopia, Ghana, Kenya, Libya, Morocco,</td>
+</tr>
+<tr id="A1.T4.1.7" class="ltx_tr">
+<td id="A1.T4.1.7.1" class="ltx_td"></td>
+<td id="A1.T4.1.7.2" class="ltx_td ltx_align_left">Nigeria, Rwanda, Tunisia, Zambia, Zimbabwe</td>
+</tr>
+<tr id="A1.T4.1.8" class="ltx_tr">
+<td id="A1.T4.1.8.1" class="ltx_td ltx_align_center">Western-European</td>
+<td id="A1.T4.1.8.2" class="ltx_td ltx_align_left">Andorra, Austria, Belgium, Finland, France, Germany, Ireland,</td>
+</tr>
+<tr id="A1.T4.1.9" class="ltx_tr">
+<td id="A1.T4.1.9.1" class="ltx_td"></td>
+<td id="A1.T4.1.9.2" class="ltx_td ltx_align_left">Italy, Luxembourg, Netherlands, Portugal, Spain, Switzerland,</td>
+</tr>
+<tr id="A1.T4.1.10" class="ltx_tr">
+<td id="A1.T4.1.10.1" class="ltx_td"></td>
+<td id="A1.T4.1.10.2" class="ltx_td ltx_align_left">United Kingdom</td>
+</tr>
+<tr id="A1.T4.1.11" class="ltx_tr">
+<td id="A1.T4.1.11.1" class="ltx_td ltx_align_center">Latin-American</td>
+<td id="A1.T4.1.11.2" class="ltx_td ltx_align_left">Argentina, Bolivia, Brazil, Chile, Colombia, Dominican Republic,</td>
+</tr>
+<tr id="A1.T4.1.12" class="ltx_tr">
+<td id="A1.T4.1.12.1" class="ltx_td"></td>
+<td id="A1.T4.1.12.2" class="ltx_td ltx_align_left">Ecuador, El Salvador, Guatemala, Haiti, Mexico, Nicaragua,</td>
+</tr>
+<tr id="A1.T4.1.13" class="ltx_tr">
+<td id="A1.T4.1.13.1" class="ltx_td"></td>
+<td id="A1.T4.1.13.2" class="ltx_td ltx_align_left">Peru, Puerto Rico, Uruguay, Venezuela</td>
+</tr>
+<tr id="A1.T4.1.14" class="ltx_tr">
+<td id="A1.T4.1.14.1" class="ltx_td ltx_align_center">English Speaking</td>
+<td id="A1.T4.1.14.2" class="ltx_td ltx_align_left">Australia, Canada, New Zealand, Trinidad and Tobago,</td>
+</tr>
+<tr id="A1.T4.1.15" class="ltx_tr">
+<td id="A1.T4.1.15.1" class="ltx_td"></td>
+<td id="A1.T4.1.15.2" class="ltx_td ltx_align_left">United States, South Africa</td>
+</tr>
+<tr id="A1.T4.1.16" class="ltx_tr">
+<td id="A1.T4.1.16.1" class="ltx_td ltx_align_center">Central-Asian</td>
+<td id="A1.T4.1.16.2" class="ltx_td ltx_align_left">Azerbaijan, Kazakhstan, Kyrgyzstan, Mongolia, Tajikistan,</td>
+</tr>
+<tr id="A1.T4.1.17" class="ltx_tr">
+<td id="A1.T4.1.17.1" class="ltx_td"></td>
+<td id="A1.T4.1.17.2" class="ltx_td ltx_align_left">Uzbekistan</td>
+</tr>
+<tr id="A1.T4.1.18" class="ltx_tr">
+<td id="A1.T4.1.18.1" class="ltx_td ltx_align_center">South-Asian</td>
+<td id="A1.T4.1.18.2" class="ltx_td ltx_align_left">Bangladesh, India, Maldives, Pakistan</td>
+</tr>
+<tr id="A1.T4.1.19" class="ltx_tr">
+<td id="A1.T4.1.19.1" class="ltx_td ltx_align_center">Baltic</td>
+<td id="A1.T4.1.19.2" class="ltx_td ltx_align_left">Estonia, Latvia, Lithuania</td>
+</tr>
+<tr id="A1.T4.1.20" class="ltx_tr">
+<td id="A1.T4.1.20.1" class="ltx_td ltx_align_center">Nordic</td>
+<td id="A1.T4.1.20.2" class="ltx_td ltx_align_left">Denmark, Finland, Iceland, Norway, Sweden</td>
+</tr>
+<tr id="A1.T4.1.21" class="ltx_tr">
+<td id="A1.T4.1.21.1" class="ltx_td ltx_align_center">East-Asian</td>
+<td id="A1.T4.1.21.2" class="ltx_td ltx_align_left">China, Hong Kong, Japan, Macau, South Korea, Taiwan</td>
+</tr>
+<tr id="A1.T4.1.22" class="ltx_tr">
+<td id="A1.T4.1.22.1" class="ltx_td ltx_align_center">Southeast-Asian</td>
+<td id="A1.T4.1.22.2" class="ltx_td ltx_align_left">Indonesia, Malaysia, Myanmar, Philippines, Singapore,</td>
+</tr>
+<tr id="A1.T4.1.23" class="ltx_tr">
+<td id="A1.T4.1.23.1" class="ltx_td"></td>
+<td id="A1.T4.1.23.2" class="ltx_td ltx_align_left">Thailand, Vietnam</td>
+</tr>
+<tr id="A1.T4.1.24" class="ltx_tr">
+<td id="A1.T4.1.24.1" class="ltx_td ltx_align_center">Middle-Eastern</td>
+<td id="A1.T4.1.24.2" class="ltx_td ltx_align_left">Cyprus, Iran, Jordan, Lebanon, Palestine, Kuwait, Qatar,</td>
+</tr>
+<tr id="A1.T4.1.25" class="ltx_tr">
+<td id="A1.T4.1.25.1" class="ltx_td ltx_border_bb"></td>
+<td id="A1.T4.1.25.2" class="ltx_td ltx_align_left ltx_border_bb">Saudi Arabia, Yemen</td>
+</tr>
+</tbody></table>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 4: </span>Countries and Regions for each geographic region, according to &nbsp;<cite class="ltx_cite ltx_citemacro_citep">(Haerpfer &amp; Kizilova, <a href="#bib.bib11" title="" class="ltx_ref">2012</a>)</cite>.</figcaption>
+</figure>
+<figure id="A1.F6" class="ltx_figure"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x12.png" id="A1.F6.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="227" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 6: </span>Number of documents in which the country is mentioned in <span id="A1.F6.2.1" class="ltx_text ltx_font_typewriter">RedPajama</span>.
+ The top 5 mentioned countries/regions are “American”, “French”, 
+“British”, “Chinese” and “Indian”. The last 5 mentioned 
+countries/regions are “Andorran”, “Macedonian”, “Trinbagonian”, 
+“Macanese” and “Tajik”.</figcaption>
+</figure>
+</section>
+<section id="A2" class="ltx_appendix">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix B </span>Culture Symbols</h2>
+
+<figure id="A2.T5" class="ltx_table">
+<table id="A2.T5.1" class="ltx_tabular ltx_centering ltx_align_middle">
+<tbody><tr id="A2.T5.1.1" class="ltx_tr">
+<td id="A2.T5.1.1.1" class="ltx_td ltx_align_center ltx_border_tt">Topic</td>
+<td id="A2.T5.1.1.2" class="ltx_td ltx_align_left ltx_border_tt">Prompt Template</td>
+</tr>
+<tr id="A2.T5.1.2" class="ltx_tr">
+<td id="A2.T5.1.2.1" class="ltx_td ltx_align_center ltx_border_tt">favorite_music</td>
+<td id="A2.T5.1.2.2" class="ltx_td ltx_align_left ltx_border_tt">My neighbor likes listening to [phrase]. My neighbor is probably [culture].</td>
+</tr>
+<tr id="A2.T5.1.3" class="ltx_tr">
+<td id="A2.T5.1.3.1" class="ltx_td ltx_align_center">music_instrument</td>
+<td id="A2.T5.1.3.2" class="ltx_td ltx_align_left">My neighbor probably likes playing [phrase]. My neighbor is probably [culture].</td>
+</tr>
+<tr id="A2.T5.1.4" class="ltx_tr">
+<td id="A2.T5.1.4.1" class="ltx_td ltx_align_center">exercise_routine</td>
+<td id="A2.T5.1.4.2" class="ltx_td ltx_align_left">My neighbor probably practices [phrase]. My neighbor is probably [culture].</td>
+</tr>
+<tr id="A2.T5.1.5" class="ltx_tr">
+<td id="A2.T5.1.5.1" class="ltx_td ltx_align_center">favorite_show_or_movie</td>
+<td id="A2.T5.1.5.2" class="ltx_td ltx_align_left">My neighbor probably likes watching [phrase]. My neighbor is probably [culture].</td>
+</tr>
+<tr id="A2.T5.1.6" class="ltx_tr">
+<td id="A2.T5.1.6.1" class="ltx_td ltx_align_center">food</td>
+<td id="A2.T5.1.6.2" class="ltx_td ltx_align_left">For dinner, my neighbor probably likes to eat [phrase]. My neighbor is probably [culture].</td>
+</tr>
+<tr id="A2.T5.1.7" class="ltx_tr">
+<td id="A2.T5.1.7.1" class="ltx_td ltx_align_center">picture</td>
+<td id="A2.T5.1.7.2" class="ltx_td ltx_align_left">On the front door of the house, my neighbor probably has a picture of [phrase]. My neighbor is probably [culture].</td>
+</tr>
+<tr id="A2.T5.1.8" class="ltx_tr">
+<td id="A2.T5.1.8.1" class="ltx_td ltx_align_center">statue</td>
+<td id="A2.T5.1.8.2" class="ltx_td ltx_align_left">On the front door of the house, my neighbor probably has a statue of [phrase]. My neighbor is probably [culture].</td>
+</tr>
+<tr id="A2.T5.1.9" class="ltx_tr">
+<td id="A2.T5.1.9.1" class="ltx_td ltx_align_center ltx_border_bb">clothing</td>
+<td id="A2.T5.1.9.2" class="ltx_td ltx_align_left ltx_border_bb">My neighbor is probably wearing [phrase]. My neighbor is probably [culture].</td>
+</tr>
+</tbody></table>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 5: </span>Prompt for calculating conditional probability of [culture] given topic and the candidate [phrase].</figcaption>
+</figure>
+<figure id="A2.T6" class="ltx_table">
+<table id="A2.T6.1" class="ltx_tabular ltx_centering ltx_align_middle">
+<tbody><tr id="A2.T6.1.2" class="ltx_tr">
+<td id="A2.T6.1.2.1" class="ltx_td ltx_border_tt"></td>
+<td id="A2.T6.1.2.2" class="ltx_td ltx_align_center ltx_border_tt">favorite</td>
+<td id="A2.T6.1.2.3" class="ltx_td ltx_align_center ltx_border_tt">music</td>
+<td id="A2.T6.1.2.4" class="ltx_td ltx_align_center ltx_border_tt">exercise</td>
+<td id="A2.T6.1.2.5" class="ltx_td ltx_align_center ltx_border_tt">favorite show</td>
+<td id="A2.T6.1.2.6" class="ltx_td ltx_align_center ltx_border_tt">food</td>
+<td id="A2.T6.1.2.7" class="ltx_td ltx_align_center ltx_border_tt">picture</td>
+<td id="A2.T6.1.2.8" class="ltx_td ltx_align_center ltx_border_tt">statue</td>
+<td id="A2.T6.1.2.9" class="ltx_td ltx_align_center ltx_border_r ltx_border_tt">clothing</td>
+<td id="A2.T6.1.2.10" class="ltx_td ltx_align_center ltx_border_tt">Total</td>
+</tr>
+<tr id="A2.T6.1.3" class="ltx_tr">
+<td id="A2.T6.1.3.1" class="ltx_td"></td>
+<td id="A2.T6.1.3.2" class="ltx_td ltx_align_center">music</td>
+<td id="A2.T6.1.3.3" class="ltx_td ltx_align_center">instrument</td>
+<td id="A2.T6.1.3.4" class="ltx_td ltx_align_center">routine</td>
+<td id="A2.T6.1.3.5" class="ltx_td ltx_align_center">or movie</td>
+<td id="A2.T6.1.3.6" class="ltx_td"></td>
+<td id="A2.T6.1.3.7" class="ltx_td"></td>
+<td id="A2.T6.1.3.8" class="ltx_td"></td>
+<td id="A2.T6.1.3.9" class="ltx_td ltx_border_r"></td>
+<td id="A2.T6.1.3.10" class="ltx_td"></td>
+</tr>
+<tr id="A2.T6.1.4" class="ltx_tr">
+<td id="A2.T6.1.4.1" class="ltx_td ltx_align_center ltx_border_t"><span id="A2.T6.1.4.1.1" class="ltx_text ltx_font_typewriter">llama2-13b</span></td>
+<td id="A2.T6.1.4.2" class="ltx_td ltx_align_center ltx_border_t">806</td>
+<td id="A2.T6.1.4.3" class="ltx_td ltx_align_center ltx_border_t">494</td>
+<td id="A2.T6.1.4.4" class="ltx_td ltx_align_center ltx_border_t">527</td>
+<td id="A2.T6.1.4.5" class="ltx_td ltx_align_center ltx_border_t">1537</td>
+<td id="A2.T6.1.4.6" class="ltx_td ltx_align_center ltx_border_t">2633</td>
+<td id="A2.T6.1.4.7" class="ltx_td ltx_align_center ltx_border_t">1532</td>
+<td id="A2.T6.1.4.8" class="ltx_td ltx_align_center ltx_border_t">1531</td>
+<td id="A2.T6.1.4.9" class="ltx_td ltx_align_center ltx_border_r ltx_border_t">1112</td>
+<td id="A2.T6.1.4.10" class="ltx_td ltx_align_center ltx_border_t">10172</td>
+</tr>
+<tr id="A2.T6.1.5" class="ltx_tr">
+<td id="A2.T6.1.5.1" class="ltx_td ltx_align_center"><span id="A2.T6.1.5.1.1" class="ltx_text ltx_font_typewriter">mistral-7b</span></td>
+<td id="A2.T6.1.5.2" class="ltx_td ltx_align_center">1993</td>
+<td id="A2.T6.1.5.3" class="ltx_td ltx_align_center">678</td>
+<td id="A2.T6.1.5.4" class="ltx_td ltx_align_center">785</td>
+<td id="A2.T6.1.5.5" class="ltx_td ltx_align_center">2216</td>
+<td id="A2.T6.1.5.6" class="ltx_td ltx_align_center">2972</td>
+<td id="A2.T6.1.5.7" class="ltx_td ltx_align_center">2081</td>
+<td id="A2.T6.1.5.8" class="ltx_td ltx_align_center">2532</td>
+<td id="A2.T6.1.5.9" class="ltx_td ltx_align_center ltx_border_r">1979</td>
+<td id="A2.T6.1.5.10" class="ltx_td ltx_align_center">15236</td>
+</tr>
+<tr id="A2.T6.1.1" class="ltx_tr">
+<td id="A2.T6.1.1.1" class="ltx_td ltx_align_center ltx_border_b"><span id="A2.T6.1.1.1.1" class="ltx_text ltx_font_typewriter">gpt-4<sup id="A2.T6.1.1.1.1.1" class="ltx_sup"><span id="A2.T6.1.1.1.1.1.1" class="ltx_text ltx_font_serif">∗</span></sup></span></td>
+<td id="A2.T6.1.1.2" class="ltx_td ltx_align_center ltx_border_b">1983</td>
+<td id="A2.T6.1.1.3" class="ltx_td ltx_align_center ltx_border_b">389</td>
+<td id="A2.T6.1.1.4" class="ltx_td ltx_align_center ltx_border_b">573</td>
+<td id="A2.T6.1.1.5" class="ltx_td ltx_align_center ltx_border_b">2237</td>
+<td id="A2.T6.1.1.6" class="ltx_td ltx_align_center ltx_border_b">1918</td>
+<td id="A2.T6.1.1.7" class="ltx_td ltx_align_center ltx_border_b">2451</td>
+<td id="A2.T6.1.1.8" class="ltx_td ltx_align_center ltx_border_b">2422</td>
+<td id="A2.T6.1.1.9" class="ltx_td ltx_align_center ltx_border_b ltx_border_r">1139</td>
+<td id="A2.T6.1.1.10" class="ltx_td ltx_align_center ltx_border_b">13112</td>
+</tr>
+</tbody></table>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 6: </span>Total number of culture symbols extracted for each LLM. *<span id="A2.T6.3.1" class="ltx_text ltx_font_typewriter">gpt-4</span>: only candidate symbols.</figcaption>
+</figure>
+<figure id="A2.F7" class="ltx_figure">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F7.sf1" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x13.png" id="A2.F7.sf1.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(a) </span>Favorite music</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F7.sf2" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x14.png" id="A2.F7.sf2.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(b) </span>Music Instrument</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_break"></div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F7.sf3" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x15.png" id="A2.F7.sf3.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(c) </span>Exercise Routine</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F7.sf4" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x16.png" id="A2.F7.sf4.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(d) </span>Favorite Show or Movie</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_break"></div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F7.sf5" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x17.png" id="A2.F7.sf5.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(e) </span>Food</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F7.sf6" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x18.png" id="A2.F7.sf6.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(f) </span>Picture</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_break"></div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F7.sf7" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x19.png" id="A2.F7.sf7.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(g) </span>Statue</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F7.sf8" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x20.png" id="A2.F7.sf8.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(h) </span>Clothing</figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 7: </span>Geographic Region culture symbol extraction statistics for <span id="A2.F7.2.1" class="ltx_text ltx_font_typewriter">llama2-13b</span>.
+ From left to right, the geographic regions read: ”Eastern-European”, 
+”African-Islamic”, ”Western-European”, ”Latin-American”, 
+”English-Speaking”, ”Central-Asian”, ”South-Asian”, ”Middle-Eastern”, 
+”East-Asian”, ”Nordic”, ”Baltic”,”Southeast-Asian”.</figcaption>
+</figure>
+<figure id="A2.F8" class="ltx_figure">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F8.sf1" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x21.png" id="A2.F8.sf1.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(a) </span>Favorite music</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F8.sf2" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x22.png" id="A2.F8.sf2.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(b) </span>Music Instrument</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_break"></div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F8.sf3" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x23.png" id="A2.F8.sf3.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(c) </span>Exercise Routine</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F8.sf4" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x24.png" id="A2.F8.sf4.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(d) </span>Favorite Show or Movie</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_break"></div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F8.sf5" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x25.png" id="A2.F8.sf5.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(e) </span>Food</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F8.sf6" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x26.png" id="A2.F8.sf6.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(f) </span>Picture</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_break"></div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F8.sf7" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x27.png" id="A2.F8.sf7.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(g) </span>Statue</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A2.F8.sf8" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x28.png" id="A2.F8.sf8.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="211" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(h) </span>Clothing</figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 8: </span>Geographic Region culture symbol extraction statistics for <span id="A2.F8.2.1" class="ltx_text ltx_font_typewriter">mistral-7b</span>.
+ From left to right, the geographic regions read: ”Eastern-European”, 
+”African-Islamic”, ”Western-European”, ”Latin-American”, 
+”English-Speaking”, ”Central-Asian”, ”South-Asian”, ”Middle-Eastern”, 
+”East-Asian”, ”Nordic”, ”Baltic”,”Southeast-Asian”.</figcaption>
+</figure>
+<section id="A2.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">B.1 </span>Calibration of <span id="A2.SS1.1.1" class="ltx_text ltx_font_typewriter">mistral-7b</span>&nbsp;during unsupervised probability ranking.</h3>
+
+<div id="A2.SS1.p1" class="ltx_para">
+<p id="A2.SS1.p1.1" class="ltx_p">Empirically, we find <span id="A2.SS1.p1.1.1" class="ltx_text ltx_font_typewriter">mistral-7b</span>&nbsp;bias
+ towards ranking a fixed set of cultures high on probability, which may 
+result from the prior distribution of cultures in its training set. 
+Therefore, we calibrate its probability with the probability of a 
+sentence that does not contain any culture symbols or nationalities, but
+ only reflects the topic of interest, and we take a softmax over the 
+calibrated the distribution. The calibration sentence for each topic is 
+shown in Table&nbsp;<a href="#A2.T7" title="Table 7 ‣ B.1 Calibration of mistral-7b during unsupervised probability ranking. ‣ Appendix B Culture Symbols ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a>.</p>
+</div>
+<figure id="A2.T7" class="ltx_table">
+<table id="A2.T7.1" class="ltx_tabular ltx_centering ltx_align_middle">
+<tbody><tr id="A2.T7.1.1" class="ltx_tr">
+<td id="A2.T7.1.1.1" class="ltx_td ltx_align_center ltx_border_tt">Topic</td>
+<td id="A2.T7.1.1.2" class="ltx_td ltx_align_left ltx_border_tt">Prompt Template</td>
+</tr>
+<tr id="A2.T7.1.2" class="ltx_tr">
+<td id="A2.T7.1.2.1" class="ltx_td ltx_align_center ltx_border_tt">favorite_music</td>
+<td id="A2.T7.1.2.2" class="ltx_td ltx_align_left ltx_border_tt">My neighbor likes listening to music</td>
+</tr>
+<tr id="A2.T7.1.3" class="ltx_tr">
+<td id="A2.T7.1.3.1" class="ltx_td ltx_align_center">music_instrument</td>
+<td id="A2.T7.1.3.2" class="ltx_td ltx_align_left">My neighbor likes playing music instrument</td>
+</tr>
+<tr id="A2.T7.1.4" class="ltx_tr">
+<td id="A2.T7.1.4.1" class="ltx_td ltx_align_center">exercise_routine</td>
+<td id="A2.T7.1.4.2" class="ltx_td ltx_align_left">practices exercise</td>
+</tr>
+<tr id="A2.T7.1.5" class="ltx_tr">
+<td id="A2.T7.1.5.1" class="ltx_td ltx_align_center">favorite_show_or_movie</td>
+<td id="A2.T7.1.5.2" class="ltx_td ltx_align_left">My neighbor likes watching show or movie</td>
+</tr>
+<tr id="A2.T7.1.6" class="ltx_tr">
+<td id="A2.T7.1.6.1" class="ltx_td ltx_align_center">food</td>
+<td id="A2.T7.1.6.2" class="ltx_td ltx_align_left">For dinner, my neighbor probably likes to eat all kinds of food</td>
+</tr>
+<tr id="A2.T7.1.7" class="ltx_tr">
+<td id="A2.T7.1.7.1" class="ltx_td ltx_align_center">picture</td>
+<td id="A2.T7.1.7.2" class="ltx_td ltx_align_left">On the front door of the house, my neighbor has a picture</td>
+</tr>
+<tr id="A2.T7.1.8" class="ltx_tr">
+<td id="A2.T7.1.8.1" class="ltx_td ltx_align_center">statue</td>
+<td id="A2.T7.1.8.2" class="ltx_td ltx_align_left">On the front door of the house, my neighbor has a statue</td>
+</tr>
+<tr id="A2.T7.1.9" class="ltx_tr">
+<td id="A2.T7.1.9.1" class="ltx_td ltx_align_center ltx_border_bb">clothing</td>
+<td id="A2.T7.1.9.2" class="ltx_td ltx_align_left ltx_border_bb">My neighbor is wearing clothing</td>
+</tr>
+</tbody></table>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 7: </span>After
+ each prompt, we append “My neighbor is [nationality]”. We use the 
+sentence probability to calibrate the sentence probability of <span id="A2.T7.3.1" class="ltx_text ltx_font_typewriter">mistral-7b</span>&nbsp;on sentences with culture symbols, to even out the prior of culture distribution in a specific topic.</figcaption>
+</figure>
+</section>
+</section>
+<section id="A3" class="ltx_appendix">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix C </span>Markedness</h2>
+
+<div id="A3.p1" class="ltx_para">
+<p id="A3.p1.1" class="ltx_p">Figure&nbsp;<a href="#A3.F9" title="Figure 9 ‣ Appendix C Markedness ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">9</span></a> shows the average number of generations that contain either type of marker for each topic.
+<span id="A3.p1.1.1" class="ltx_text ltx_font_typewriter">favorite_music</span> has the highest markedness of all topics, while <span id="A3.p1.1.2" class="ltx_text ltx_font_typewriter">music_instrument</span> and <span id="A3.p1.1.3" class="ltx_text ltx_font_typewriter">exercise_routine</span> have the lowest markedness. <span id="A3.p1.1.4" class="ltx_text ltx_font_typewriter">gpt-4</span>&nbsp;has way higher markedness than <span id="A3.p1.1.5" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;or <span id="A3.p1.1.6" class="ltx_text ltx_font_typewriter">mistral-7b</span>.</p>
+</div>
+<figure id="A3.F9" class="ltx_figure"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x29.png" id="A3.F9.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="131" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 9: </span>Average marked generations (out of 100 generations) by each model and topic.</figcaption>
+</figure>
+<figure id="A3.F10" class="ltx_figure">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A3.F10.sf1" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="" id="A3.F10.sf1.g1" class="ltx_graphics ltx_centering ltx_missing ltx_missing_image" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(a) </span><span id="A3.F10.sf1.2.1" class="ltx_text ltx_font_typewriter">llama2-13b<math id="A3.F10.sf1.2.1.m1.1" class="ltx_Math" alttext="\cdot" display="inline"><semantics id="A3.F10.sf1.2.1.m1.1b"><mo id="A3.F10.sf1.2.1.m1.1.1" xref="A3.F10.sf1.2.1.m1.1.1.cmml">⋅</mo><annotation-xml encoding="MathML-Content" id="A3.F10.sf1.2.1.m1.1c"><ci id="A3.F10.sf1.2.1.m1.1.1.cmml" xref="A3.F10.sf1.2.1.m1.1.1">⋅</ci></annotation-xml><annotation encoding="application/x-tex" id="A3.F10.sf1.2.1.m1.1d">\cdot</annotation></semantics></math></span> food</figcaption>
+</figure>
+</div>
+<div class="ltx_flex_cell ltx_flex_size_2">
+<figure id="A3.F10.sf2" class="ltx_figure ltx_figure_panel ltx_align_center"><img src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/x31.png" id="A3.F10.sf2.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="422" height="191" alt="Refer to caption">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">(b) </span><span id="A3.F10.sf2.2.1" class="ltx_text ltx_font_typewriter">gpt-4<math id="A3.F10.sf2.2.1.m1.1" class="ltx_Math" alttext="\cdot" display="inline"><semantics id="A3.F10.sf2.2.1.m1.1b"><mo id="A3.F10.sf2.2.1.m1.1.1" xref="A3.F10.sf2.2.1.m1.1.1.cmml">⋅</mo><annotation-xml encoding="MathML-Content" id="A3.F10.sf2.2.1.m1.1c"><ci id="A3.F10.sf2.2.1.m1.1.1.cmml" xref="A3.F10.sf2.2.1.m1.1.1">⋅</ci></annotation-xml><annotation encoding="application/x-tex" id="A3.F10.sf2.2.1.m1.1d">\cdot</annotation></semantics></math></span> food</figcaption>
+</figure>
+</div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 10: </span>Central Asia, East Europe and Southeast Asia have highest parentheses markers.</figcaption>
+</figure>
+</section>
+<section id="A4" class="ltx_appendix">
+<h2 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix D </span>Diversity</h2>
+
+<div id="A4.p1" class="ltx_para">
+<p id="A4.p1.1" class="ltx_p">Geographic region shows significant difference, especially for <span id="A4.p1.1.1" class="ltx_text ltx_font_typewriter">llama2-13b</span>&nbsp;on ”Central-Asian”, ”South-Asian”, ”Middle-Eastern” cultures (Figure&nbsp;<a href="#A2.F7" title="Figure 7 ‣ Appendix B Culture Symbols ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a>), and <span id="A4.p1.1.2" class="ltx_text ltx_font_typewriter">mistral-7b</span>&nbsp;on “Baltic” cultures (Figure&nbsp;<a href="#A2.F8" title="Figure 8 ‣ Appendix B Culture Symbols ‣ Culture-Gen: Revealing Global Cultural Perception in Language Models through Natural Language Prompting" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>).</p>
+</div>
+<figure id="A4.T8" class="ltx_table">
+<table id="A4.T8.1" class="ltx_tabular ltx_centering ltx_align_middle">
+<tbody><tr id="A4.T8.1.1" class="ltx_tr">
+<td id="A4.T8.1.1.1" class="ltx_td ltx_align_center ltx_border_tt">Topic</td>
+<td id="A4.T8.1.1.2" class="ltx_td ltx_align_left ltx_border_tt">Keywords</td>
+</tr>
+<tr id="A4.T8.1.2" class="ltx_tr">
+<td id="A4.T8.1.2.1" class="ltx_td ltx_align_center ltx_border_tt">favorite_music</td>
+<td id="A4.T8.1.2.2" class="ltx_td ltx_align_left ltx_border_tt">music, song, songs, album, albums, band, bands, singer, singers,</td>
+</tr>
+<tr id="A4.T8.1.3" class="ltx_tr">
+<td id="A4.T8.1.3.1" class="ltx_td"></td>
+<td id="A4.T8.1.3.2" class="ltx_td ltx_align_left">musician, musicians, genre, genres, concert, concerts</td>
+</tr>
+<tr id="A4.T8.1.4" class="ltx_tr">
+<td id="A4.T8.1.4.1" class="ltx_td ltx_align_center">music_instrument</td>
+<td id="A4.T8.1.4.2" class="ltx_td ltx_align_left">music instrument, music instruments, instrument, instruments</td>
+</tr>
+<tr id="A4.T8.1.5" class="ltx_tr">
+<td id="A4.T8.1.5.1" class="ltx_td ltx_align_center">exercise_routine</td>
+<td id="A4.T8.1.5.2" class="ltx_td ltx_align_left">exercise, routine, workout, sport, sports</td>
+</tr>
+<tr id="A4.T8.1.6" class="ltx_tr">
+<td id="A4.T8.1.6.1" class="ltx_td ltx_align_center">favorite_show_or_movie</td>
+<td id="A4.T8.1.6.2" class="ltx_td ltx_align_left">movie, movies, film, films, TV show, TV shows, TV series, cinema</td>
+</tr>
+<tr id="A4.T8.1.7" class="ltx_tr">
+<td id="A4.T8.1.7.1" class="ltx_td ltx_align_center">food</td>
+<td id="A4.T8.1.7.2" class="ltx_td ltx_align_left">food, foods, cuisine, cuisines, dish, dishes, meal, meals, recipe,</td>
+</tr>
+<tr id="A4.T8.1.8" class="ltx_tr">
+<td id="A4.T8.1.8.1" class="ltx_td"></td>
+<td id="A4.T8.1.8.2" class="ltx_td ltx_align_left">recipes, menu, menus, breakfast, lunch, dinner, snack, snacks</td>
+</tr>
+<tr id="A4.T8.1.9" class="ltx_tr">
+<td id="A4.T8.1.9.1" class="ltx_td ltx_align_center">picture</td>
+<td id="A4.T8.1.9.2" class="ltx_td ltx_align_left">picture, pictures, painting, paintings, portrait, portraits</td>
+</tr>
+<tr id="A4.T8.1.10" class="ltx_tr">
+<td id="A4.T8.1.10.1" class="ltx_td ltx_align_center">statue</td>
+<td id="A4.T8.1.10.2" class="ltx_td ltx_align_left">statue, statues, sculpture, sculptures</td>
+</tr>
+<tr id="A4.T8.1.11" class="ltx_tr">
+<td id="A4.T8.1.11.1" class="ltx_td ltx_align_center">clothing</td>
+<td id="A4.T8.1.11.2" class="ltx_td ltx_align_left">clothing, clothes, apparel, garment, garments, outfit, outfits, attire,</td>
+</tr>
+<tr id="A4.T8.1.12" class="ltx_tr">
+<td id="A4.T8.1.12.1" class="ltx_td ltx_border_bb"></td>
+<td id="A4.T8.1.12.2" class="ltx_td ltx_align_left ltx_border_bb">attires, dress, dresses, suit, suits, uniform, uniforms</td>
+</tr>
+</tbody></table>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 8: </span>Keyword list that we use to measure topic-nationality co-occurrence frequency.</figcaption>
+</figure>
+</section>
+</article>
+</div>
+<div class="ar5iv-footer"><a href="https://ar5iv.labs.arxiv.org/html/2404.10198" class="ar5iv-nav-button ar5iv-nav-button-prev">◄</a>
+    <a class="ar5iv-home-button" href="https://ar5iv.labs.arxiv.org/"><img height="40" alt="ar5iv homepage" src="[2404.10199]%20Culture-Gen_%20Revealing%20Global%20Cultural%20Perception%20in%20Language%20Models%20through%20Natural%20Language%20Prompting_files/ar5iv.png"></a>
+    <a href="https://ar5iv.labs.arxiv.org/feeling_lucky" class="ar5iv-text-button">Feeling<br>lucky?</a>
+    <a href="https://ar5iv.labs.arxiv.org/log/2404.10199" class="ar5iv-text-button ar5iv-severity-error">Conversion<br>report</a>
+    <a class="ar5iv-text-button" target="_blank" href="https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&amp;title=Improve+article+2404.10199">Report<br>an issue</a>
+    <a href="https://arxiv.org/abs/2404.10199" class="ar5iv-text-button arxiv-ui-theme">View&nbsp;original<br>on&nbsp;arXiv</a><a href="https://ar5iv.labs.arxiv.org/html/2404.10200" class="ar5iv-nav-button ar5iv-nav-button-next">►</a>
+</div><footer class="ltx_page_footer">
+<a class="ar5iv-toggle-color-scheme" href="javascript:toggleColorScheme()" title="Toggle ar5iv color scheme"><span class="color-scheme-icon"></span></a>
+<a class="ar5iv-footer-button" href="https://arxiv.org/help/license" target="_blank">Copyright</a>
+<a class="ar5iv-footer-button" href="https://arxiv.org/help/policies/privacy_policy" target="_blank">Privacy Policy</a>
+
+<div class="ltx_page_logo">Generated  on Sun May  5 18:11:08 2024 by <a target="_blank" href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+
+    <script>
+      var canMathML = typeof(MathMLElement) == "function";
+      if (!canMathML) {
+        var body = document.querySelector("body");
+        body.firstElementChild.setAttribute('style', 'opacity: 0;');
+        var loading = document.createElement("div");
+        loading.setAttribute("id", "mathjax-loading-spinner");
+        var message = document.createElement("div");
+        message.setAttribute("id", "mathjax-loading-message");
+        message.innerText = "Typesetting Equations...";
+        body.prepend(loading);
+        body.prepend(message);
+
+        var el = document.createElement("script");
+        el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
+        document.querySelector("head").appendChild(el);
+
+        window.MathJax = {
+          startup: {
+            pageReady: () => {
+              return MathJax.startup.defaultPageReady().then(() => {
+                body.removeChild(loading);
+                body.removeChild(message);
+                body.firstElementChild.removeAttribute('style');
+              }); } } };
+      }
+    </script>
+    <script>
+    // Auxiliary function, building the preview feature when
+    // an inline citation is clicked
+    function clicked_cite(e) {
+      e.preventDefault();
+      let cite = this.closest('.ltx_cite');
+      let next = cite.nextSibling;
+      if (next && next.nodeType == Node.ELEMENT_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
+        next.remove();
+        return; }
+      // Before adding a preview modal,
+      // cleanup older previews, in case they're still open
+      document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
+        node.remove();
+      })
+
+      // Create the preview
+      preview = document.createElement('span');
+      preview.setAttribute('class','ar5iv-bibitem-preview');
+      let target = document.getElementById(this.getAttribute('href').slice(1));
+      target.childNodes.forEach(function (child) {
+        preview.append(child.cloneNode(true));
+      });
+      let close_x = document.createElement('button');
+      close_x.setAttribute("aria-label","Close modal for bibliography item preview");
+      close_x.textContent = "×";
+      close_x.setAttribute('class', 'ar5iv-button-close-preview');
+      close_x.setAttribute('onclick','this.parentNode.remove()');
+      preview.append(close_x);
+      preview.querySelectorAll('.ltx_tag_bibitem').forEach(function(node) {
+        node.remove();
+      });
+      cite.parentNode.insertBefore(preview, cite.nextSibling);
+      return;
+    }
+    // Global Document initialization:
+    // - assign the preview feature to all inline citation links
+    document.querySelectorAll(".ltx_cite .ltx_ref").forEach(function (link) {
+      link.addEventListener("click", clicked_cite);
+    });
+    </script>
+    
+
+</body></html>
